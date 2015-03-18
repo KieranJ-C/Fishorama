@@ -46,6 +46,7 @@
       <Name>seahorse</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Urchin.png">
       <Name>Urchin</Name>
