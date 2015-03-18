@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>seahorse.png</Source>
+      <Name>seahorse</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\app dev sem 2\my first app\XNAMachinationisRatio_FinalProject\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\seahorse.xnb</Output>
+      <Time>2011-04-06T12:12:44+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Urchin.png</Source>
+      <Name>Urchin</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\app dev sem 2\my first app\XNAMachinationisRatio_FinalProject\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\Urchin.xnb</Output>
+      <Time>2011-04-06T12:12:44+01:00</Time>
+    </Item>
+    <Item>
+      <Source>AquariumBackground.png</Source>
+      <Name>AquariumBackground</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\app dev sem 2\my first app\XNAMachinationisRatio_FinalProject\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\AquariumBackground.xnb</Output>
+      <Time>2011-04-06T15:36:34+01:00</Time>
+    </Item>
+    <Item>
+      <Source>ChickenLeg.png</Source>
+      <Name>ChickenLeg</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\app dev sem 2\my first app\XNAMachinationisRatio_FinalProject\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\ChickenLeg.xnb</Output>
+      <Time>2011-04-06T18:13:48+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Piranha.png</Source>
+      <Name>Piranha</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\app dev sem 2\my first app\XNAMachinationisRatio_FinalProject\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\Piranha.xnb</Output>
+      <Time>2011-04-06T18:13:48+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Piranha1.png</Source>
+      <Name>Piranha1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\app dev sem 2\my first app\XNAMachinationisRatio_FinalProject\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\Piranha1.xnb</Output>
+      <Time>2011-10-26T00:43:34+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Piranha2.png</Source>
+      <Name>Piranha2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\app dev sem 2\my first app\XNAMachinationisRatio_FinalProject\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\Piranha2.xnb</Output>
+      <Time>2011-10-26T00:43:58+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Leg_Marker1.png</Source>
+      <Name>Marker1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\app dev sem 2\my first app\XNAMachinationisRatio_FinalProject\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\Marker1.xnb</Output>
+      <Time>2011-10-26T00:44:20+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Leg_Marker2.png</Source>
+      <Name>Marker2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\app dev sem 2\my first app\XNAMachinationisRatio_FinalProject\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\Marker2.xnb</Output>
+      <Time>2011-10-26T00:44:24+01:00</Time>
+    </Item>
+    <Item>
+      <Source>OrangeFishOriginal.png</Source>
+      <Name>OrangeFishOriginal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\app dev sem 2\my first app\XNAMachinationisRatio_FinalProject\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\OrangeFishOriginal.xnb</Output>
+      <Time>2015-02-25T11:43:16+00:00</Time>
+    </Item>
+    <Item>
+      <Source>OrangeFish.png</Source>
+      <Name>OrangeFish</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\app dev sem 2\my first app\XNAMachinationisRatio_FinalProject\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\OrangeFish.xnb</Output>
+      <Time>2015-03-04T10:30:40+00:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>HiDef</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>J:\app dev sem 2\my first app\XNAMachinationisRatio_FinalProject\XNAMachinationisRatio_FinalProject\FishORama\FishORamaContent\</RootDirectory>
+      <LoggerRootDirectory>J:\app dev sem 2\my first app\XNAMachinationisRatio_FinalProject\XNAMachinationisRatio_FinalProject\FishORama\FishORama\</LoggerRootDirectory>
+      <IntermediateDirectory>J:\app dev sem 2\my first app\XNAMachinationisRatio_FinalProject\XNAMachinationisRatio_FinalProject\FishORama\FishORamaContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>J:\app dev sem 2\my first app\XNAMachinationisRatio_FinalProject\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2010-08-23T13:41:18+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2010-08-23T13:41:18+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T13:41:18+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2010-08-23T13:41:18+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2010-08-23T13:41:18+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2010-08-23T13:41:18+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2015-03-17T20:30:23.7965153+00:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
