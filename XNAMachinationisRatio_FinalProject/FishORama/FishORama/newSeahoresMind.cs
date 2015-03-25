@@ -45,7 +45,7 @@ namespace FishORama
      * 
      * Mind objects enact behaviors through the method Update (see below for further details). 
      */
-    class OrangeFishMind : AIPlayer
+    class SeahorseMind : AIPlayer
     {
         #region Data Members
 
@@ -58,6 +58,7 @@ namespace FishORama
         private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
         private float mSpeed = 5;
         private float timesTurned = 0;
+        private float startY;
         //private string mName = "Kieran";
 
         #endregion
@@ -71,7 +72,7 @@ namespace FishORama
         {
             set { mAquarium = value; }
         }
-        
+
         #endregion
 
         #region Constructors
@@ -80,7 +81,7 @@ namespace FishORama
         /// Default constructor.
         /// </summary>
         /// <param name="pToken">Token to be associated with the mind.</param>
-        public OrangeFishMind(X2DToken pToken)
+        public SeahorseMind(X2DToken pToken)
         {
             /* LEARNING PILL: associating a mind with a token
              * In order for a mind to control a token, it must be associated with the token.
@@ -89,6 +90,8 @@ namespace FishORama
              */
             this.Possess(pToken);       // Possess token.
             mFacingDirection = 1;       // Current direction the fish is facing.
+            Vector3 tokenPosition = this.PossessedToken.Position;
+            startY = tokenPosition.Y;
         }
 
         #endregion
@@ -145,7 +148,7 @@ namespace FishORama
 
             this.PossessedToken.Orientation = new Vector3(mFacingDirection,
                                                         this.PossessedToken.Orientation.Y,
-                                                        this.PossessedToken.Orientation.Z);  
+                                                        this.PossessedToken.Orientation.Z);
         }
 
         public void VerticalSwimBehaviour()
@@ -184,16 +187,17 @@ namespace FishORama
                 
             }*/
             //if(tokenPosition.Y < 150)
-            if(tokenPosition.Y <= 150 && bodymass <= 25)
+            if (tokenPosition.Y <= startY + 100 && bodymass <= 25)
             {
                 VerticalSwimBehaviour();
             }
+            else if (tokenPosition)
             else /*if(bodymass <= 25)*/
-                {
-                    HorizontalSwimBehaviour();
-                }
+            {
+                HorizontalSwimBehaviour();
+            }
 
-        }        
+        }
         #endregion
     }
 }

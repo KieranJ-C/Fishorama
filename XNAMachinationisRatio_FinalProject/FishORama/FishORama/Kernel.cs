@@ -239,6 +239,16 @@ namespace FishORama
             // Import second piranha visual asset in the library
             lib.ImportAsset(A);
 
+            // Create a new graphic asset  for the Seahorse visuals using class X2DAsset.
+            A = new X2DAsset("SeahorseVisuals", "seahorse").
+                UVOriginAt(64, 64).
+                UVTopLeftCornerAt(0, 0).
+                Width(128).
+                Height(128);
+
+            // Import Seahorse visual asset in the library
+            lib.ImportAsset(A);
+
 
             // Return library.
             return lib;
@@ -315,6 +325,12 @@ namespace FishORama
             tokenPos = new Vector3(-120, -200, 1);
             mScene.Place(orangeFish2, tokenPos);
             numOfFish++;
+
+            SeahorseToken Seahorse1 = new SeahorseToken("Seahorse", aquarium);
+            float startX = 0;
+            float startY = -20;
+            tokenPos = new Vector3(startX, startY, 1);
+            mScene.Place(Seahorse1, tokenPos);
         }
 
 
