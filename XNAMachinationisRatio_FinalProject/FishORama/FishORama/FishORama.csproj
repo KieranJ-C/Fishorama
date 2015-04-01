@@ -114,8 +114,10 @@
     <Compile Include="AquariumToken.cs" />
     <Compile Include="AquariumMind.cs" />
     <Compile Include="ChickenLegToken.cs" />
-    <Compile Include="newSeahoresMind.cs" />
-    <Compile Include="newSeahorseToken.cs" />
+    <Compile Include="PiranhaToken.cs" />
+    <Compile Include="PiranhaMind.cs" />
+    <Compile Include="SeahoresMind.cs" />
+    <Compile Include="SeahorseToken.cs" />
     <Compile Include="OrangeFishToken.cs" />
     <Compile Include="player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

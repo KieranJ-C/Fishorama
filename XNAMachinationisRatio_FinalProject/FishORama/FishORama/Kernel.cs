@@ -219,6 +219,16 @@ namespace FishORama
             // Import orange fish visual asset in the library
             lib.ImportAsset(A);
 
+            // Create a new graphic asset  for the piranha visuals using class X2DAsset.
+            A = new X2DAsset("PiranhaVisuals", "Piranha").
+                UVOriginAt(64, 64).
+                UVTopLeftCornerAt(0, 0).
+                Width(128).
+                Height(128);
+
+            // Import piranha visual asset in the library
+            lib.ImportAsset(A);
+
             // Create a new graphic asset  for the first piranha visuals using class X2DAsset.
             A = new X2DAsset("PiranhaVisuals1", "Piranha1").
                 UVOriginAt(64, 64).
@@ -313,18 +323,21 @@ namespace FishORama
             //Startup the visualization, giving the "...and ACTION!" directive.
             this.PlayScene(mScene);
 
-
+            // Creates a random number between -320 and 320 for the X co-ordiantes and -200 and 200 for the Y co-ordinates
+            Random Piranharandom = new Random();
+            int PiranharandomX = Piranharandom.Next(-320, 320);
+            int PiranharandomY = Piranharandom.Next(-200, 200);
 
             // My First Variables
             OrangeFishToken orangeFish1 = new OrangeFishToken("OrangeFish", aquarium); 
             tokenPos = new Vector3(0, 50, 1);
             mScene.Place(orangeFish1, tokenPos);
-            numOfFish++;
-            
-            OrangeFishToken orangeFish2 = new OrangeFishToken("OrangeFish", aquarium);
-            tokenPos = new Vector3(-120, -200, 1);
-            mScene.Place(orangeFish2, tokenPos);
-            numOfFish++;
+
+
+            PiranhaToken Piranha = new PiranhaToken("Piranha", aquarium);
+            tokenPos = new Vector3(PiranharandomX, PiranharandomY, 1);
+            mScene.Place(Piranha, tokenPos);
+
 
             SeahorseToken Seahorse1 = new SeahorseToken("Seahorse", aquarium);
             float startX = 0;
