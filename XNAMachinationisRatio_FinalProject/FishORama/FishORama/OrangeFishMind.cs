@@ -113,12 +113,6 @@ namespace FishORama
         /// </summary>
         /// <param name="pGameTime">Game time</param>
 
-        public float BMI(float pHeight, float pWeight)
-        {
-            float bmiresult = ((pWeight * 703) / pHeight);
-            return bmiresult;
-        }
-
         public void HorizontalSwimBehaviour()
         {
 
@@ -157,7 +151,6 @@ namespace FishORama
         {
             Vector3 tokenPosition = this.PossessedToken.Position;
             this.PossessedToken.Position = tokenPosition;
-
             if(tokenPosition.Y <= 150)
             {
                 VerticalSwimBehaviour();

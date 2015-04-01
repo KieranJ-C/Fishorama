@@ -57,9 +57,7 @@ namespace FishORama
 
         private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
         private float mSpeed = 5;
-        private Vector3 ChickenLegPosition;
-        private float ChaseY;
-        private float ChaseX;
+
 
         #endregion
 
@@ -115,7 +113,7 @@ namespace FishORama
         /// </summary>
         /// <param name="pGameTime">Game time</param>
 
-        public void HorizontalSwimBehaviour()
+        public void Hungry()
         {
             Vector3 tokenPosition = this.PossessedToken.Position;
             tokenPosition.X = tokenPosition.X + (mSpeed * mFacingDirection);
@@ -131,66 +129,34 @@ namespace FishORama
                                                         this.PossessedToken.Orientation.Z);  
         }
 
-        public void VerticalSwimBehaviour()
+
+        public void Feeding()
         {
             Vector3 tokenPosition = this.PossessedToken.Position;
+            this.PossessedToken.Position = tokenPosition;
+            tokenPosition.X = tokenPosition.X + (mSpeed * mFacingDirection);
             tokenPosition.Y = tokenPosition.Y + (mSpeed * mFacingDirection);
-            this.PossessedToken.Position = tokenPosition;
-            if (tokenPosition.Y >= 200 || tokenPosition.Y <= -200)
+           /* if (tokenPosition != mAquarium.ChickenLeg.Position)
             {
-                mFacingDirection = -mFacingDirection;
-            }
-
-
-            this.PossessedToken.Orientation = new Vector3(mFacingDirection,
-                                                        this.PossessedToken.Orientation.Y,
-                                                        this.PossessedToken.Orientation.Z);
-        }
-
-        public void EatLeg()
-        {
-           /* ChickenLegPosition = mAquarium.ChickenLeg.Position;
-            Vector3 tokenPosition = this.PossessedToken.Position;
-            this.PossessedToken.Position = tokenPosition;
-
-            if ((ChickenLegPosition.X - tokenPosition.X) >= 1)
-            {
-                tokenPosition.X = tokenPosition.Y + 10;
-            }
-            else if ((ChickenLegPosition.X - tokenPosition.X) <= 1)
-            {
-                tokenPosition.X = tokenPosition.Y - 10;
-            }
-            else if ((ChickenLegPosition.Y - tokenPosition.Y) >= 1)
-            {
-                tokenPosition.Y = tokenPosition.Y + 10;
-            }
-            else if ((ChickenLegPosition.Y - tokenPosition.Y) <= 1)
-            {
-                tokenPosition.Y = tokenPosition.Y - 10;
+                tokenPosition.X = mAquarium.ChickenLeg.Position.X;
+                tokenPosition.Y = mAquarium.ChickenLeg.Position.Y;
             }*/
+
         }
 
         public override void Update(ref GameTime pGameTime)
         {
             Vector3 tokenPosition = this.PossessedToken.Position;
             this.PossessedToken.Position = tokenPosition;
-            ChickenLegPosition = mAquarium.ChickenLeg.Position;
 
-            if (mAquarium.ChickenLeg != null) 
+            if (mAquarium.ChickenLeg == null) 
             {
-                EatLeg();
-                tokenPosition.Y = ChickenLegPosition.Y;
+                Hungry();
             }
 
-
-            else if(tokenPosition.Y <= 150)
-            {
-                VerticalSwimBehaviour();
-            }
-            else
+            else if(mAquarium.ChickenLeg != null)
                 {
-                    HorizontalSwimBehaviour();
+                    Feeding();
                 }
 
         }        
