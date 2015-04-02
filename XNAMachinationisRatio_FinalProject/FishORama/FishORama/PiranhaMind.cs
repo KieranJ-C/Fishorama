@@ -133,21 +133,47 @@ namespace FishORama
         public void Feeding()
         {
             Vector3 tokenPosition = this.PossessedToken.Position;
-            this.PossessedToken.Position = tokenPosition;
-            tokenPosition.X = tokenPosition.X + (mSpeed * mFacingDirection);
-            tokenPosition.Y = tokenPosition.Y + (mSpeed * mFacingDirection);
+            
+           /* tokenPosition.X = tokenPosition.X + (mSpeed * mFacingDirection);
+            tokenPosition.Y = tokenPosition.Y + (mSpeed * mFacingDirection);*/
+           
            /* if (tokenPosition != mAquarium.ChickenLeg.Position)
             {
                 tokenPosition.X = mAquarium.ChickenLeg.Position.X;
                 tokenPosition.Y = mAquarium.ChickenLeg.Position.Y;
             }*/
 
+
+
+            if (tokenPosition.X < mAquarium.ChickenLeg.Position.X)
+            {
+                tokenPosition.X += mSpeed;
+            }
+
+            else if (tokenPosition.X > mAquarium.ChickenLeg.Position.X)
+            {
+                tokenPosition.X -= mSpeed;
+            }
+
+            if (tokenPosition.Y < mAquarium.ChickenLeg.Position.Y)
+            {
+                tokenPosition.Y += mSpeed;
+
+            }
+
+            else if (tokenPosition.Y > mAquarium.ChickenLeg.Position.Y)
+            {
+                tokenPosition.Y -= mSpeed;
+            }
+
+            this.PossessedToken.Position = tokenPosition;
         }
 
         public override void Update(ref GameTime pGameTime)
         {
             Vector3 tokenPosition = this.PossessedToken.Position;
             this.PossessedToken.Position = tokenPosition;
+
 
             if (mAquarium.ChickenLeg == null) 
             {

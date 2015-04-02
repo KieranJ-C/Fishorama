@@ -77,7 +77,7 @@ namespace FishORama
         
         I2DScene mScene = null;     // Reference to the FishORama scene, set to null before its initialization.
                                     // Creation and initialization is performed in the LoadContent method.
-        int numOfFish = 0;
+
         /* LEARNING PILL: XNA Machinationis Ratio Camera
          * Just like it happens for movies, XNA Machinationis Ratio visualizes
          * a scene displaying it through a camera object. Hence, simulations using
