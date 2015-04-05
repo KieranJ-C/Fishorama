@@ -89,8 +89,8 @@ namespace FishORama
              */
             this.Possess(pToken);       // Possess token.
             mFacingDirection = 1;       // Current direction the fish is facing.
-            Vector3 tokenPosition = this.PossessedToken.Position;
-            startY = tokenPosition.Y;
+            //Vector3 tokenPosition = this.PossessedToken.Position;
+            //startY = tokenPosition.Y;
 
         }
 

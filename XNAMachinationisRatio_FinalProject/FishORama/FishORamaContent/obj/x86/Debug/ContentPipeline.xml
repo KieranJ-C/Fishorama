@@ -100,6 +100,15 @@
       <Output>C:\Users\Kieran\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\OrangeFish.xnb</Output>
       <Time>2015-03-04T10:30:40+00:00</Time>
     </Item>
+    <Item>
+      <Source>Bubble.png</Source>
+      <Name>Bubble</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Kieran\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\Bubble.xnb</Output>
+      <Time>2013-07-11T14:07:36+01:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

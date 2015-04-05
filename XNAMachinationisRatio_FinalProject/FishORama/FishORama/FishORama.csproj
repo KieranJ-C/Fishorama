@@ -114,6 +114,8 @@
     <Compile Include="AquariumToken.cs" />
     <Compile Include="AquariumMind.cs" />
     <Compile Include="ChickenLegToken.cs" />
+    <Compile Include="BubbleToken.cs" />
+    <Compile Include="BubbleMind.cs" />
     <Compile Include="PiranhaToken.cs" />
     <Compile Include="PiranhaMind.cs" />
     <Compile Include="SeahoresMind.cs" />

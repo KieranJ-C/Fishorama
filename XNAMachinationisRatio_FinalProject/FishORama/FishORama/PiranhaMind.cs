@@ -60,6 +60,7 @@ namespace FishORama
         private float mSpeed = 5;
         private bool EatLegX = false;
         private bool EatLegY = false;
+        private bool justAte = false;
 
 
         #endregion
@@ -136,44 +137,40 @@ namespace FishORama
         public void Feeding()
         {
             Vector3 tokenPosition = this.PossessedToken.Position;
-            
-           /* tokenPosition.X = tokenPosition.X + (mSpeed * mFacingDirection);
-            tokenPosition.Y = tokenPosition.Y + (mSpeed * mFacingDirection);*/
-           
-           /* if (tokenPosition != mAquarium.ChickenLeg.Position)
-            {
-                tokenPosition.X = mAquarium.ChickenLeg.Position.X;
-                tokenPosition.Y = mAquarium.ChickenLeg.Position.Y;
-            }*/
 
             if (tokenPosition.X < mAquarium.ChickenLeg.Position.X)
             {
+                mFacingDirection = 1;
                 tokenPosition.X += mSpeed;
             }
 
             else if (tokenPosition.X > mAquarium.ChickenLeg.Position.X)
             {
+                mFacingDirection = -1;
                 tokenPosition.X -= mSpeed;
             }
 
             if (tokenPosition.Y < mAquarium.ChickenLeg.Position.Y)
             {
+                
                 tokenPosition.Y += mSpeed;
-
             }
 
             else if (tokenPosition.Y > mAquarium.ChickenLeg.Position.Y)
             {
+                
                 tokenPosition.Y -= mSpeed;
             }
 
-            if (tokenPosition.X - mAquarium.ChickenLeg.Position.X < 5  || tokenPosition.X - mAquarium.ChickenLeg.Position.X < -5)
+            if (tokenPosition.X - mAquarium.ChickenLeg.Position.X <= 5 && tokenPosition.X - mAquarium.ChickenLeg.Position.X >= -5)
             {
+                tokenPosition.X = mAquarium.ChickenLeg.Position.X;
                 EatLegX = true;
             }
 
-            if (tokenPosition.Y - mAquarium.ChickenLeg.Position.Y < 5 || tokenPosition.Y - mAquarium.ChickenLeg.Position.Y < -5)
+            if (tokenPosition.Y - mAquarium.ChickenLeg.Position.Y <= 5 && tokenPosition.Y - mAquarium.ChickenLeg.Position.Y >= -5)
             {
+                tokenPosition.Y = mAquarium.ChickenLeg.Position.Y;
                 EatLegY = true;
             }
 
@@ -184,14 +181,26 @@ namespace FishORama
                 EatLegY = false;
             }
             this.PossessedToken.Position = tokenPosition;
+            this.PossessedToken.Orientation = new Vector3(mFacingDirection,
+                                            this.PossessedToken.Orientation.Y,
+                                            this.PossessedToken.Orientation.Z);  
         }
 
         public void Full()
         {
             Vector3 tokenPosition = this.PossessedToken.Position;
             mSpeed = 1;
-            
+            tokenPosition.X = tokenPosition.X + (mSpeed * mFacingDirection);
             this.PossessedToken.Position = tokenPosition;
+            if (tokenPosition.X >= 400 || tokenPosition.X <= -400)
+            {
+                mFacingDirection = -mFacingDirection;
+            }
+
+
+            this.PossessedToken.Orientation = new Vector3(mFacingDirection,
+                                                        this.PossessedToken.Orientation.Y,
+                                                        this.PossessedToken.Orientation.Z);  
         }
 
         public override void Update(ref GameTime pGameTime)
@@ -204,7 +213,7 @@ namespace FishORama
                 Feeding();
             }
 
-            else if (mAquarium.ChickenLeg == null && )
+            else if(mAquarium.ChickenLeg == null && justAte == true)
             {
                 Full();
             }

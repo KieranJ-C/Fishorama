@@ -259,6 +259,16 @@ namespace FishORama
             // Import Seahorse visual asset in the library
             lib.ImportAsset(A);
 
+            // Create a new graphic asset  for the Bubble visuals using class X2DAsset.
+            A = new X2DAsset("BubbleVisuals", "Bubble").
+                UVOriginAt(16, 16).
+                UVTopLeftCornerAt(0, 0).
+                Width(32).
+                Height(32);
+
+            // Import Bubble visual asset in the library
+            lib.ImportAsset(A);
+
 
             // Return library.
             return lib;
@@ -338,12 +348,24 @@ namespace FishORama
             tokenPos = new Vector3(PiranharandomX, PiranharandomY, 1);
             mScene.Place(Piranha, tokenPos);
 
+            /*BubbleToken Bubble1 = new BubbleToken("Bubble", aquarium);
+            tokenPos = new Vector3(20, 20, 1);
+            mScene.Place(Bubble1, tokenPos);*/
 
-            SeahorseToken Seahorse1 = new SeahorseToken("Seahorse", aquarium);
-            float startX = 0;
-            float startY = -20;
-            tokenPos = new Vector3(startX, startY, 1);
-            mScene.Place(Seahorse1, tokenPos);
+            int NumSeaHorses = 0;
+            Random randStartX = new Random();
+            Random randStartY = new Random();
+            int i = 0;
+
+            while(NumSeaHorses < 3)
+            {
+                SeahorseToken Seahorse1 = new SeahorseToken("Seahorse", aquarium);
+                int startingX = randStartX.Next(-350, 350);
+                int startingY = randStartY.Next(-350, 350);
+                tokenPos = new Vector3(startingX, startingY, 1);
+                mScene.Place(Seahorse1, tokenPos);
+                NumSeaHorses++;
+            }
         }
 
 
