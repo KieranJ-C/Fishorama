@@ -43,6 +43,9 @@ namespace FishORama
         protected override void DefaultProperties()
         {
             this.GraphicProperties.AssetID = "BubbleVisuals";
+            BubbleMind myMind = new BubbleMind(this);
+            mMind = myMind;     // Store explicit reference to mind being used.
+            mMind.Aquarium = mAquarium;  
         }
 
         #endregion

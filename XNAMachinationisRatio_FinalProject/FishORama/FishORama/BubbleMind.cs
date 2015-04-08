@@ -19,8 +19,12 @@ namespace FishORama
         private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
         private float mSpeed = 5;
         private bool CanRise = true;
-        private Vector3 start;
         private float startY;
+        private float tokenPos;
+        I2DScene mScene;
+
+
+
 
         #endregion
 
@@ -44,8 +48,9 @@ namespace FishORama
             this.Possess(pToken);       // Possess token.
             mFacingDirection = 1;       // Current direction the fish is facing.
             Vector3 tokenPosition = this.PossessedToken.Position;
+            startY = tokenPosition.Y;
             
-            startY = OrangeFishToken.position.Y;
+
 
 
         }
@@ -59,7 +64,7 @@ namespace FishORama
         /// </summary>
         /// <param name="pGameTime">Game time</param>
 
-      /*  public void HorizontalSwimBehaviour()
+        /*public void HorizontalSwimBehaviour()
         {
             Vector3 tokenPosition = this.PossessedToken.Position;
             tokenPosition.X = tokenPosition.X + (mSpeed * mFacingDirection);
@@ -75,51 +80,28 @@ namespace FishORama
                                                         this.PossessedToken.Orientation.Z);
         }*/
 
-        public void VerticalSwimBehaviourRise()
-        {
-            Vector3 tokenPosition = this.PossessedToken.Position;
-            tokenPosition.Y = tokenPosition.Y + mSpeed;
-            this.PossessedToken.Position = tokenPosition;
-            if (tokenPosition.Y >= (startY + 400) || tokenPosition.Y >= 600)
-            {
-                CanRise = false;
-            }   
 
-            this.PossessedToken.Orientation = new Vector3(mFacingDirection,
-                                                        this.PossessedToken.Orientation.Y,
-                                                        this.PossessedToken.Orientation.Z);
+        public void BubbleRespawn()
+        {
+
         }
 
-        public void VerticalSwimBehaviourFall()
-        {
-            Vector3 tokenPosition = this.PossessedToken.Position;
-            tokenPosition.Y = tokenPosition.Y + -mSpeed;
-            this.PossessedToken.Position = tokenPosition;
-            if (tokenPosition.Y <= (startY - 100))
-            {
-
-                CanRise = true;
-            }  
-
-            this.PossessedToken.Orientation = new Vector3(mFacingDirection,
-                                                        this.PossessedToken.Orientation.Y,
-                                                        this.PossessedToken.Orientation.Z);
-        }
 
         public override void Update(ref GameTime pGameTime)
         {
+
             Vector3 tokenPosition = this.PossessedToken.Position;
-            this.PossessedToken.Position = tokenPosition;
-            //HorizontalSwimBehaviour();
-            if (CanRise == true)
+            
+            if (tokenPosition.Y > startY + 150)
             {
-                VerticalSwimBehaviourRise();
+                tokenPosition = 
+                
             }
 
-            if (CanRise == false)
-            {
-                VerticalSwimBehaviourFall();
-            }
+            else
+                tokenPosition.Y = tokenPosition.Y + 10;
+
+            this.PossessedToken.Position = tokenPosition;
 
 
 

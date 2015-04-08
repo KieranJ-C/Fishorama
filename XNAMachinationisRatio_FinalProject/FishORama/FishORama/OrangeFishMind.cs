@@ -57,7 +57,7 @@ namespace FishORama
 
         private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
         private float mSpeed = 5;
-
+        public float currentPos;
 
         #endregion
 
@@ -147,6 +147,7 @@ namespace FishORama
                                                         this.PossessedToken.Orientation.Z);
         }
 
+
         public override void Update(ref GameTime pGameTime)
         {
             Vector3 tokenPosition = this.PossessedToken.Position;
@@ -159,7 +160,8 @@ namespace FishORama
                 {
                     HorizontalSwimBehaviour();
                 }
-
+            
+            currentPos = tokenPosition.X;
         }        
         #endregion
     }

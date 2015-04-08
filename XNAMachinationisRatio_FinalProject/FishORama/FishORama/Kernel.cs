@@ -317,6 +317,12 @@ namespace FishORama
             tokenPos = new Vector3(0, 0, 0);            // Define scene position for the aquarium.
             mScene.Place(aquarium, tokenPos);           // Place token in scene.
 
+            Vector3 fishPos;
+            OrangeFishToken orangeFish1 = new OrangeFishToken("OrangeFish", aquarium); 
+
+            fishPos =  new Vector3(200, -150, 1);
+            mScene.Place(orangeFish1, fishPos);
+            
              /*
              * Create and Initialize camera
              */
@@ -339,20 +345,39 @@ namespace FishORama
             int PiranharandomY = Piranharandom.Next(-200, 200);
 
             // My First Variables
-            OrangeFishToken orangeFish1 = new OrangeFishToken("OrangeFish", aquarium); 
-            tokenPos = new Vector3(0, 50, 1);
-            mScene.Place(orangeFish1, tokenPos);
+            
+            
+            
 
 
             PiranhaToken Piranha = new PiranhaToken("Piranha", aquarium);
             tokenPos = new Vector3(PiranharandomX, PiranharandomY, 1);
             mScene.Place(Piranha, tokenPos);
 
+            List<BubbleToken> Blist = new List<BubbleToken>();
+            Random rand = new Random();
+
+            for (int i = 0; i < 10; i++)
+            {
+
+                Blist.Add(new BubbleToken("Bubble", aquarium));
+
+            }
+
+            for (int i = 0; i < Blist.Count; i++)
+            {
+                float x = fishPos.X + 100;
+                float y = fishPos.Y + (i * 10);
+                float z = fishPos.Z + 1;
+
+                tokenPos = new Vector3(x, y, z);
+                mScene.Place(Blist[i], tokenPos);
+            }
             /*BubbleToken Bubble1 = new BubbleToken("Bubble", aquarium);
             tokenPos = new Vector3(20, 20, 1);
-            mScene.Place(Bubble1, tokenPos);*/
+            mScene.Place(Bubble1, fishPos);*/
 
-            int NumSeaHorses = 0;
+            /*int NumSeaHorses = 0;
             Random randStartX = new Random();
             Random randStartY = new Random();
             int i = 0;
@@ -365,10 +390,31 @@ namespace FishORama
                 tokenPos = new Vector3(startingX, startingY, 1);
                 mScene.Place(Seahorse1, tokenPos);
                 NumSeaHorses++;
+            }*/
+
+            List<SeahorseToken> SHlist = new List<SeahorseToken>();
+            //Random rand = new Random();
+
+            for(int i = 0; i <3; i++)
+            {
+            
+                SHlist.Add(new SeahorseToken("seahorse", aquarium));
+            
             }
-        }
 
+            for (int i = 0; i < SHlist.Count; i++)  
+            {
+                int x = rand.Next(-350, 350);
+                int y = rand.Next(50, 100);
+                int z = 1;
 
+                tokenPos = new Vector3(x, y, z);
+                mScene.Place(SHlist[i], tokenPos);
+            }
+        
+        }  
+                
+                
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.

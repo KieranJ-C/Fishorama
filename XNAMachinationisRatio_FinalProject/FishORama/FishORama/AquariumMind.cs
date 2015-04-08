@@ -88,6 +88,7 @@ namespace FishORama
             this.Possess(pToken);       // Possess token.
 
             mFacingDirection = 1;       // Current direction the fish is facing.
+            
         }
 
         #endregion
@@ -120,6 +121,7 @@ namespace FishORama
             CheckLeftClickBehavior();
             
         }
+
 
         /// <summary>
         /// Check if the user clicks left mouse button. If the user clicked in the Aquarium,
@@ -165,6 +167,8 @@ namespace FishORama
 
                     this.mAquarium.Kernel.Scene.Place(mAquarium.ChickenLeg, legPos);
                 }
+                
+
             }
         }
 
