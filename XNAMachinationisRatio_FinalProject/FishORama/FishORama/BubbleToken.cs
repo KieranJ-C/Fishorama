@@ -12,10 +12,20 @@ namespace FishORama
         #region Data Members
         private AquariumToken mAquarium;  // Reference to the aquarium in which the creature lives.
         private BubbleMind mMind;       // Explicit reference to the mind the token is using to enact its behaviors.
+        private OrangeFishToken mOrangeFish;
         #endregion
 
         #region Properties
-        // No custom properties yet.
+
+        public OrangeFishToken orangeFish1
+        {
+
+            get { return mOrangeFish; }
+        
+        }
+
+
+
         #endregion
 
         #region Constructors
@@ -27,10 +37,10 @@ namespace FishORama
         /// </summary
         /// <param name="pTokenName">Name of the token.</param>
         /// <param name="pAquarium">Reference to the aquarium in which the token lives.</param>
-        public BubbleToken(String pTokenName, AquariumToken pAquarium)
+        public BubbleToken(String pTokenName, AquariumToken pAquarium, OrangeFishToken porangeFish1)
             : base(pTokenName) {
                 mAquarium = pAquarium;          // Store reference to aquarium in which the creature is living.
-
+                mMind.orangeFish1 = porangeFish1;
         }
 
         #endregion

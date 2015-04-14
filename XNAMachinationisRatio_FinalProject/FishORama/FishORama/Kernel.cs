@@ -357,43 +357,26 @@ namespace FishORama
             List<BubbleToken> Blist = new List<BubbleToken>();
             Random rand = new Random();
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
 
-                Blist.Add(new BubbleToken("Bubble", aquarium));
+                Blist.Add(new BubbleToken("Bubble", aquarium, orangeFish1));
 
             }
 
             for (int i = 0; i < Blist.Count; i++)
             {
-                float x = fishPos.X + 100;
-                float y = fishPos.Y + (i * 10);
+                float x = fishPos.X;
+                float y = fishPos.Y;
                 float z = fishPos.Z + 1;
 
                 tokenPos = new Vector3(x, y, z);
                 mScene.Place(Blist[i], tokenPos);
             }
-            /*BubbleToken Bubble1 = new BubbleToken("Bubble", aquarium);
-            tokenPos = new Vector3(20, 20, 1);
-            mScene.Place(Bubble1, fishPos);*/
 
-            /*int NumSeaHorses = 0;
-            Random randStartX = new Random();
-            Random randStartY = new Random();
-            int i = 0;
-
-            while(NumSeaHorses < 3)
-            {
-                SeahorseToken Seahorse1 = new SeahorseToken("Seahorse", aquarium);
-                int startingX = randStartX.Next(-350, 350);
-                int startingY = randStartY.Next(-350, 350);
-                tokenPos = new Vector3(startingX, startingY, 1);
-                mScene.Place(Seahorse1, tokenPos);
-                NumSeaHorses++;
-            }*/
 
             List<SeahorseToken> SHlist = new List<SeahorseToken>();
-            //Random rand = new Random();
+            
 
             for(int i = 0; i <3; i++)
             {

@@ -17,12 +17,12 @@ namespace FishORama
         private AquariumToken mAquarium;        // Reference to the aquarium in which the creature lives.
 
         private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
-        private float mSpeed = 5;
+        private int mSpeed = 5;
         private bool CanRise = true;
         private float startY;
         private float tokenPos;
         I2DScene mScene;
-
+        private OrangeFishToken mOrangeFish;
 
 
 
@@ -33,6 +33,12 @@ namespace FishORama
         public AquariumToken Aquarium
         {
             set { mAquarium = value; }
+        }
+
+        public OrangeFishToken orangeFish1
+        {
+
+            set { mOrangeFish = value; }
         }
 
         #endregion
@@ -83,25 +89,31 @@ namespace FishORama
 
         public void BubbleRespawn()
         {
+            Vector3 tokenPosition = this.PossessedToken.Position;
+            this.PossessedToken.Position = mOrangeFish.Position;
+            tokenPosition.X = tokenPosition.X + (mFacingDirection * 50);
+            Random randomSpeed = new Random();
+            mSpeed = randomSpeed.Next(1, 5);
 
+            
         }
 
 
         public override void Update(ref GameTime pGameTime)
         {
 
-            Vector3 tokenPosition = this.PossessedToken.Position;
+           Random randomSpeed = new Random();
+           Vector3 tokenPosition = this.PossessedToken.Position;
+           tokenPosition.Y = (tokenPosition.Y + mSpeed);
+           this.PossessedToken.Position = tokenPosition;
+           if (tokenPosition.Y >= 300)
+           {
+
+               BubbleRespawn();                 
+
+           } 
+
             
-            if (tokenPosition.Y > startY + 150)
-            {
-                tokenPosition = 
-                
-            }
-
-            else
-                tokenPosition.Y = tokenPosition.Y + 10;
-
-            this.PossessedToken.Position = tokenPosition;
 
 
 
