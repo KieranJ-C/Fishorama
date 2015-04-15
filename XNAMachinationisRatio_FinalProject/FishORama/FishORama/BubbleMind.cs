@@ -17,8 +17,9 @@ namespace FishORama
         private AquariumToken mAquarium;        // Reference to the aquarium in which the creature lives.
 
         private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
-        private int mSpeed = 5;
-        private bool CanRise = true;
+        Random speed = new Random();
+        private int mSpeed;
+        //private int mSpeed = 5;
         private float startY;
         private float tokenPos;
         I2DScene mScene;
@@ -51,10 +52,13 @@ namespace FishORama
         /// <param name="pToken">Token to be associated with the mind.</param>
         public BubbleMind(X2DToken pToken)
         {
+
             this.Possess(pToken);       // Possess token.
             mFacingDirection = 1;       // Current direction the fish is facing.
             Vector3 tokenPosition = this.PossessedToken.Position;
             startY = tokenPosition.Y;
+            Random speed = new Random();
+            mSpeed = speed.Next(1, 10);
             
 
 
@@ -81,7 +85,7 @@ namespace FishORama
             }
 
 
-            this.PossessedToken.Orientation = new Vector3(mFacingDirection,
+            this.PossessedToken.Orientation = new Vector3(mFacingDirection,`
                                                         this.PossessedToken.Orientation.Y,
                                                         this.PossessedToken.Orientation.Z);
         }*/
@@ -89,20 +93,17 @@ namespace FishORama
 
         public void BubbleRespawn()
         {
-            Vector3 tokenPosition = this.PossessedToken.Position;
-            this.PossessedToken.Position = mOrangeFish.Position;
-            tokenPosition.X = tokenPosition.X + (mFacingDirection * 50);
             Random randomSpeed = new Random();
+            Vector3 tokenPosition = this.PossessedToken.Position;
+            this.PossessedToken.Position = mOrangeFish.Position ;
             mSpeed = randomSpeed.Next(1, 5);
-
+            
             
         }
 
 
         public override void Update(ref GameTime pGameTime)
         {
-
-           Random randomSpeed = new Random();
            Vector3 tokenPosition = this.PossessedToken.Position;
            tokenPosition.Y = (tokenPosition.Y + mSpeed);
            this.PossessedToken.Position = tokenPosition;
