@@ -98,9 +98,41 @@ namespace FishORama
             Random randomSpeed = new Random();
             Vector3 tokenPosition = this.PossessedToken.Position;
             this.PossessedToken.Position = mOrangeFish.Position ;
-            mSpeed = randomSpeed.Next(1, 5);
             startY = mOrangeFish.Position.Y;
-            
+            justSpawned = true;
+
+            #region Individual Bubble Checks
+            if (this.PossessedToken.Name == "Bubble0" && justSpawned == true)
+            {
+                mSpeed = randomSpeed.Next(1, 5);
+            }
+            if (this.PossessedToken.Name == "Bubble1" && justSpawned == true)
+            {
+                mSpeed = randomSpeed.Next(1, 5);
+                mSpeed = randomSpeed.Next(1, 5);
+            }
+            if (this.PossessedToken.Name == "Bubble2" && justSpawned == true)
+            {
+                mSpeed = randomSpeed.Next(1, 5);
+                mSpeed = randomSpeed.Next(1, 5);
+                mSpeed = randomSpeed.Next(1, 5);
+            }
+            if (this.PossessedToken.Name == "Bubble3" && justSpawned == true)
+            {
+                mSpeed = randomSpeed.Next(1, 5);
+                mSpeed = randomSpeed.Next(1, 5);
+                mSpeed = randomSpeed.Next(1, 5);
+                mSpeed = randomSpeed.Next(1, 5);
+            }
+            if (this.PossessedToken.Name == "Bubble4" && justSpawned == true)
+            {
+                mSpeed = randomSpeed.Next(1, 5);
+                mSpeed = randomSpeed.Next(1, 5);
+                mSpeed = randomSpeed.Next(1, 5);
+                mSpeed = randomSpeed.Next(1, 5);
+                mSpeed = randomSpeed.Next(1, 5);
+            }
+            #endregion
             
         }
 
@@ -119,9 +151,9 @@ namespace FishORama
            if (tokenPosition.Y >= startY + 150)
            {
 
-               BubbleRespawn();                 
+               BubbleRespawn();
+           }
 
-           } 
 
             
 

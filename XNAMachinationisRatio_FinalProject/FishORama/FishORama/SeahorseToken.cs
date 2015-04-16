@@ -168,7 +168,7 @@ namespace FishORama
 
             SeahorseMind myMind = new SeahorseMind(this);   // Create mind, implicitly associating it to the token.
 
-
+            Random sSpeed = new Random();
             mMind = myMind;     // Store explicit reference to mind being used.
             mMind.Aquarium = mAquarium;   // Provide to mind explicit reference to Aquarium.
         }

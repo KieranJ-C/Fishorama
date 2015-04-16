@@ -56,7 +56,7 @@ namespace FishORama
         private AquariumToken mAquarium;        // Reference to the aquarium in which the creature lives.
 
         private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
-        private float mSpeed = 5;
+        private float mSpeed;
         private float startY;
         private Boolean CanRise = true;
         private bool justSpawned = true;
@@ -92,7 +92,6 @@ namespace FishORama
             mFacingDirection = 1;       // Current direction the fish is facing.
             //Vector3 tokenPosition = this.PossessedToken.Position;
             //startY = tokenPosition.Y;
-
         }
 
         #endregion
@@ -167,9 +166,30 @@ namespace FishORama
 
         public override void Update(ref GameTime pGameTime)
         {
+            Random rnd = new Random();
+            
+
             Vector3 tokenPosition = this.PossessedToken.Position;
             this.PossessedToken.Position = tokenPosition;
             HorizontalSwimBehaviour();
+            if (this.PossessedToken.Name == "seahorse0" && justSpawned == true)
+            {
+                mSpeed = rnd.Next(1, 5);
+            }
+
+            if (this.PossessedToken.Name == "seahorse1" && justSpawned == true)
+            {
+                mSpeed = rnd.Next(1, 5);
+                mSpeed = rnd.Next(1, 5);
+            }
+
+            if (this.PossessedToken.Name == "seahorse2" && justSpawned == true)
+            {
+                mSpeed = rnd.Next(1, 5);
+                mSpeed = rnd.Next(1, 5);
+                mSpeed = rnd.Next(1, 5);
+            }
+
             if (justSpawned == true)
             {
                 startY = tokenPosition.Y;

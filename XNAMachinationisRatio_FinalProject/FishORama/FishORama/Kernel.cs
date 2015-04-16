@@ -313,6 +313,7 @@ namespace FishORama
              */
 
             Vector3 tokenPos;        // Empty Vector3 object to be used to position tokens.
+  
 
             tokenPos = new Vector3(0, 0, 0);            // Define scene position for the aquarium.
             mScene.Place(aquarium, tokenPos);           // Place token in scene.
@@ -345,11 +346,7 @@ namespace FishORama
             int PiranharandomY = Piranharandom.Next(-200, 200);
 
             // My First Variables
-            
-            
-            
-
-
+       
             PiranhaToken Piranha = new PiranhaToken("Piranha", aquarium);
             tokenPos = new Vector3(PiranharandomX, PiranharandomY, 1);
             mScene.Place(Piranha, tokenPos);
@@ -360,27 +357,26 @@ namespace FishORama
             for (int i = 0; i < 5; i++)
             {
 
-                Blist.Add(new BubbleToken("Bubble", aquarium, orangeFish1));
+                Blist.Add(new BubbleToken("Bubble" + i, aquarium, orangeFish1));
 
             }
 
             for (int i = 0; i < Blist.Count; i++)
             {
-                float x = fishPos.X;
+                float x = -1000;
                 float y = fishPos.Y + (i * 4);
                 float z = 2;
                 tokenPos = new Vector3(x, y, z);
                 mScene.Place(Blist[i], tokenPos);
             }
-
-
+            
             List<SeahorseToken> SHlist = new List<SeahorseToken>();
             
 
             for(int i = 0; i <3; i++)
             {
             
-                SHlist.Add(new SeahorseToken("seahorse", aquarium));
+                SHlist.Add(new SeahorseToken("seahorse"+i, aquarium));
             
             }
 
@@ -389,12 +385,13 @@ namespace FishORama
                 int x = rand.Next(-350, 350);
                 int y = rand.Next(50, 100);
                 int z = 1;
-
+               
+                
                 tokenPos = new Vector3(x, y, z);
                 mScene.Place(SHlist[i], tokenPos);
             }
         
-        }  
+ }  
                 
                 
         /// <summary>
