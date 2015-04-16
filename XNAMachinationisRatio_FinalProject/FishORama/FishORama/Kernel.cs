@@ -367,7 +367,7 @@ namespace FishORama
             for (int i = 0; i < Blist.Count; i++)
             {
                 float x = fishPos.X;
-                float y = fishPos.Y;
+                float y = fishPos.Y + (i * 4);
                 float z = 2;
                 tokenPos = new Vector3(x, y, z);
                 mScene.Place(Blist[i], tokenPos);

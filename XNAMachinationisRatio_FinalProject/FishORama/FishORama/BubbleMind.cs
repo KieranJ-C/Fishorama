@@ -22,6 +22,8 @@ namespace FishORama
         //private int mSpeed = 5;
         private float startY;
         private float tokenPos;
+        private bool justSpawned = true;
+
         I2DScene mScene;
         private OrangeFishToken mOrangeFish;
 
@@ -57,8 +59,8 @@ namespace FishORama
             mFacingDirection = 1;       // Current direction the fish is facing.
             Vector3 tokenPosition = this.PossessedToken.Position;
             startY = tokenPosition.Y;
-            Random speed = new Random();
-            mSpeed = speed.Next(1, 10);
+            
+            mSpeed = speed.Next(1, 5);
             
 
 
@@ -97,6 +99,7 @@ namespace FishORama
             Vector3 tokenPosition = this.PossessedToken.Position;
             this.PossessedToken.Position = mOrangeFish.Position ;
             mSpeed = randomSpeed.Next(1, 5);
+            startY = mOrangeFish.Position.Y;
             
             
         }
@@ -107,7 +110,13 @@ namespace FishORama
            Vector3 tokenPosition = this.PossessedToken.Position;
            tokenPosition.Y = (tokenPosition.Y + mSpeed);
            this.PossessedToken.Position = tokenPosition;
-           if (tokenPosition.Y >= 300)
+           if (justSpawned == true)
+           {
+               startY = mOrangeFish.Position.Y;
+               justSpawned = false;
+           }
+
+           if (tokenPosition.Y >= startY + 150)
            {
 
                BubbleRespawn();                 

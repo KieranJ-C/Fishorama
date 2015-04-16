@@ -59,6 +59,7 @@ namespace FishORama
         private float mSpeed = 5;
         private float startY;
         private Boolean CanRise = true;
+        private bool justSpawned = true;
 
         #endregion
 
@@ -169,6 +170,11 @@ namespace FishORama
             Vector3 tokenPosition = this.PossessedToken.Position;
             this.PossessedToken.Position = tokenPosition;
             HorizontalSwimBehaviour();
+            if (justSpawned == true)
+            {
+                startY = tokenPosition.Y;
+                justSpawned = false;
+            }
             if (CanRise == true)
             {
                 VerticalSwimBehaviourRise();
