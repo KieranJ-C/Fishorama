@@ -23,6 +23,7 @@ namespace FishORama
         private float startY;
         private float tokenPos;
         private bool justSpawned = true;
+        Random randomSpeed = new Random();
 
         I2DScene mScene;
         private OrangeFishToken mOrangeFish;
@@ -95,7 +96,7 @@ namespace FishORama
 
         public void BubbleRespawn()
         {
-            Random randomSpeed = new Random();
+            
             Vector3 tokenPosition = this.PossessedToken.Position;
             this.PossessedToken.Position = mOrangeFish.Position ;
             startY = mOrangeFish.Position.Y;
