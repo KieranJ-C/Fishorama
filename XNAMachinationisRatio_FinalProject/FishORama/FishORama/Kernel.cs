@@ -383,7 +383,7 @@ namespace FishORama
             for (int i = 0; i < SHlist.Count; i++)  
             {
                 int x = rand.Next(-350, 350);
-                int y = rand.Next(50, 100);
+                int y = rand.Next(-100, 100);
                 int z = 1;
                
                 
