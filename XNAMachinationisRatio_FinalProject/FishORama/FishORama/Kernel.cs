@@ -269,6 +269,16 @@ namespace FishORama
             // Import Bubble visual asset in the library
             lib.ImportAsset(A);
 
+            // Create Submarine visuals using class X2DAsset.
+            A = new X2DAsset("SubmarineVisuals", "Submarine").
+                UVOriginAt(32, 64).
+                UVTopLeftCornerAt(0, 0).
+                Width(128).
+                Height(64);
+
+            // Import Submarine visual asset in the library
+            lib.ImportAsset(A);
+
 
             // Return library.
             return lib;
@@ -323,6 +333,7 @@ namespace FishORama
 
             fishPos =  new Vector3(200, -150, 1);
             mScene.Place(orangeFish1, fishPos);
+
             
              /*
              * Create and Initialize camera
@@ -390,6 +401,11 @@ namespace FishORama
                 tokenPos = new Vector3(x, y, z);
                 mScene.Place(SHlist[i], tokenPos);
             }
+
+            SubmarineToken Submarine = new SubmarineToken("Submarine", aquarium);
+            tokenPos = new Vector3(0, 0, 1);
+            mScene.Place(Submarine, tokenPos);
+
         
  }  
                 

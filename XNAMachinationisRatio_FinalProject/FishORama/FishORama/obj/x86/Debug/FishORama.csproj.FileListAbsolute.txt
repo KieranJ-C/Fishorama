@@ -270,3 +270,4 @@ C:\Users\TEMP\Desktop\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishOR
 C:\Users\TEMP\Desktop\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\TEMP\Desktop\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\obj\x86\Debug\FishORama.exe
 C:\Users\TEMP\Desktop\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\obj\x86\Debug\FishORama.pdb
+C:\Users\JANK1_14\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\Submarine.xnb

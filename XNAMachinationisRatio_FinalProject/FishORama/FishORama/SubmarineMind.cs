@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Timers;
 using Microsoft.Xna.Framework;              // Required to use XNA features.
 using XNAMachinationisRatio;                // Required to use the XNA Machinationis Ratio Engine general features.
 using XNAMachinationisRatio.AI;             // Required to use the XNA Machinationis Ratio general AI features.
@@ -45,7 +46,7 @@ namespace FishORama
      * 
      * Mind objects enact behaviors through the method Update (see below for further details). 
      */
-    class OrangeFishMind : AIPlayer
+    class SubmarineMind : AIPlayer
     {
         #region Data Members
 
@@ -57,7 +58,7 @@ namespace FishORama
 
         private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
         private float mSpeed = 5;
-        private double currTime;
+
 
 
         #endregion
@@ -80,7 +81,7 @@ namespace FishORama
         /// Default constructor.
         /// </summary>
         /// <param name="pToken">Token to be associated with the mind.</param>
-        public OrangeFishMind(X2DToken pToken)
+        public SubmarineMind(X2DToken pToken)
         {
             /* LEARNING PILL: associating a mind with a token
              * In order for a mind to control a token, it must be associated with the token.
@@ -113,61 +114,12 @@ namespace FishORama
         /// AI Update method.
         /// </summary>
         /// <param name="pGameTime">Game time</param>
-        public void HorizontalSwimBehaviour()
-        {
-
-            Vector3 tokenPosition = this.PossessedToken.Position;
-            tokenPosition.X = tokenPosition.X + (mSpeed * mFacingDirection);
-            this.PossessedToken.Position = tokenPosition;
-            if (tokenPosition.X >= 350 || tokenPosition.X <= -350)
-            {
-                mFacingDirection = -mFacingDirection;
-
-            }
-
-
-            this.PossessedToken.Orientation = new Vector3(mFacingDirection,
-                                                        this.PossessedToken.Orientation.Y,
-                                                        this.PossessedToken.Orientation.Z);  
-        }
-
-        /*
-        public void VerticalSwimBehaviour()
-        {
-            Vector3 tokenPosition = this.PossessedToken.Position;
-            tokenPosition.Y = tokenPosition.Y + (mSpeed * mFacingDirection);
-            this.PossessedToken.Position = tokenPosition;
-            if (tokenPosition.Y >= 200 || tokenPosition.Y <= -200)
-            {
-                mFacingDirection = -mFacingDirection;
-            }
-
-
-            this.PossessedToken.Orientation = new Vector3(mFacingDirection,
-                                                        this.PossessedToken.Orientation.Y,
-                                                        this.PossessedToken.Orientation.Z);
-        }
-        */
-
         public override void Update(ref GameTime pGameTime)
         {
-            currTime = pGameTime.TotalGameTime.TotalSeconds;
-            if (currTime < 15)
-                    { HorizontalSwimBehaviour(); }
-
-
-            /*
             Vector3 tokenPosition = this.PossessedToken.Position;
+            tokenPosition.X ++;
             this.PossessedToken.Position = tokenPosition;
-            if(tokenPosition.Y <= 150)
-            {
-                VerticalSwimBehaviour();
-            }
-            else 
-                {
-                    HorizontalSwimBehaviour();
-                }
-            */
+
 
         }        
         #endregion
