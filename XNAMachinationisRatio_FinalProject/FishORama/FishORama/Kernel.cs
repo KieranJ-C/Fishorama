@@ -403,7 +403,7 @@ namespace FishORama
             }
 
             SubmarineToken Submarine = new SubmarineToken("Submarine", aquarium);
-            tokenPos = new Vector3(0, 0, 1);
+            tokenPos = new Vector3(-500, 0, 1);
             mScene.Place(Submarine, tokenPos);
 
         
