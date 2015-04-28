@@ -58,6 +58,11 @@ namespace FishORama
         private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
         private float mSpeed = 5;
         private double currTime;
+        private bool Newloop = true;
+        private float StartHX;
+        private double StartTime;
+        private double FinishTime;
+        private int BehaviourNumber = 4;
 
 
         #endregion
@@ -71,7 +76,7 @@ namespace FishORama
         {
             set { mAquarium = value; }
         }
-        
+
         #endregion
 
         #region Constructors
@@ -128,48 +133,90 @@ namespace FishORama
 
             this.PossessedToken.Orientation = new Vector3(mFacingDirection,
                                                         this.PossessedToken.Orientation.Y,
-                                                        this.PossessedToken.Orientation.Z);  
+                                                        this.PossessedToken.Orientation.Z);
         }
 
-        /*
-        public void VerticalSwimBehaviour()
+        public void HungryHorizontalSwimBehaviour()
         {
+
             Vector3 tokenPosition = this.PossessedToken.Position;
-            tokenPosition.Y = tokenPosition.Y + (mSpeed * mFacingDirection);
-            this.PossessedToken.Position = tokenPosition;
-            if (tokenPosition.Y >= 200 || tokenPosition.Y <= -200)
+            tokenPosition.X = tokenPosition.X + (mSpeed * mFacingDirection);
+            if (tokenPosition.X >= StartHX + 75 || tokenPosition.X <= StartHX - 75)
             {
                 mFacingDirection = -mFacingDirection;
+
             }
 
-
+            this.PossessedToken.Position = tokenPosition;
             this.PossessedToken.Orientation = new Vector3(mFacingDirection,
                                                         this.PossessedToken.Orientation.Y,
                                                         this.PossessedToken.Orientation.Z);
         }
-        */
+
+        
+        public void VerticalSwimBehaviour()
+        {
+            Vector3 tokenPosition = this.PossessedToken.Position;
+            tokenPosition.Y ++;
+            this.PossessedToken.Position = tokenPosition;
+            this.PossessedToken.Orientation = new Vector3(mFacingDirection,
+                                                        this.PossessedToken.Orientation.Y,
+                                                        this.PossessedToken.Orientation.Z);
+            if (tokenPosition.Y >= 250)
+            {
+                BehaviourNumber = 0;
+            }
+        }
+        
 
         public override void Update(ref GameTime pGameTime)
         {
-            currTime = pGameTime.TotalGameTime.TotalSeconds;
-            if (currTime < 15)
-                    { HorizontalSwimBehaviour(); }
-
-
-            /*
             Vector3 tokenPosition = this.PossessedToken.Position;
-            this.PossessedToken.Position = tokenPosition;
-            if(tokenPosition.Y <= 150)
-            {
-                VerticalSwimBehaviour();
-            }
-            else 
-                {
-                    HorizontalSwimBehaviour();
-                }
-            */
+            currTime = pGameTime.TotalGameTime.TotalSeconds;
 
-        }        
+            if (BehaviourNumber == 0)
+            {
+                HorizontalSwimBehaviour();
+            }
+
+            if (Newloop == true)
+            {
+                StartHX = tokenPosition.X;
+                StartTime = pGameTime.TotalGameTime.TotalSeconds;
+                FinishTime = StartTime + DateTime.Now.Second;
+                Newloop = false;
+            }
+
+            #region Hungry
+            if (BehaviourNumber == 3)
+            {
+                this.PossessedToken.Position = tokenPosition;
+                if (tokenPosition.X <= StartHX + 75 || tokenPosition.X >= StartHX - 75)
+                {
+                    HungryHorizontalSwimBehaviour();
+                }
+
+                if (tokenPosition.Y <= 250)
+                {
+                    VerticalSwimBehaviour();
+                }
+
+
+            }
+            #endregion
+
+            if (BehaviourNumber == 4)
+            {
+                this.PossessedToken.Position = tokenPosition;
+                tokenPosition.Y += -5;
+                if (tokenPosition.Y < -360)
+                {
+                    BehaviourNumber = 0;
+                }
+
+            }
+        }
         #endregion
+        }
     }
-}
+
