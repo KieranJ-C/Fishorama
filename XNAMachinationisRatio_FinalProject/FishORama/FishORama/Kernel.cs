@@ -12,28 +12,6 @@ using Microsoft.Xna.Framework.Media;
 using XNAMachinationisRatio;                // Required to use the XNA Machinationis Ratio general features.
 using XNAMachinationisRatio.Resource;       // Required to use the XNA Machinationis Ratio resource management features.
 
-/* LERNING PILL: XNAMachinationisRatio Engine
- * XNAMachinationisRatio is an engine that allows implementing
- * simulations and games based on XNA, simplifying the use of XNA
- * and adding features not directly available in XNA.
- * XNAMachinationisRatio is a work in progress.
- * The engine works "under the hood", taking care of many features
- * of an interactive simulation automatically, thus minimizing
- * the amount of code that developers have to write.
- * 
- * In order to use the engine, the application main class (Kernel, in the
- * case of FishO'Rama) creates, initializes and stores
- * an instance of class Engine in one of its data members.
- * 
- * The classes comprised in the engine and the related functionalities
- * can be accessed from a new XNA project, by:
- * 1) Creating a project reference to the XNAMachinationisRatio project (right-click
- * on your project, select 'Add Reference..." and then select the XNAMachinationisRatio
- * either through the 'Projects' or the 'Browse' tab).
- * 2) Adding appropriate 'using' statements to the source code files from which
- * the XNA Machinationis Ratio classes must be used.
- */
-
 /* LEARNING PILL: virtual world space and graphics in FishORama
  * In the Machinationis Ratio engine every object has graphic a position in the
  * virtual world expressed through a 3D vector (represented via a Vector3 object).
