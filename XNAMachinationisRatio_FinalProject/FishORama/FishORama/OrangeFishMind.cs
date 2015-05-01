@@ -62,7 +62,7 @@ namespace FishORama
         private float StartHX;
         private double StartTime;
         private double FinishTime;
-        private int BehaviourNumber = 4;
+        private int BehaviourNumber = 3;
 
 
         #endregion
@@ -174,11 +174,6 @@ namespace FishORama
             Vector3 tokenPosition = this.PossessedToken.Position;
             currTime = pGameTime.TotalGameTime.TotalSeconds;
 
-            if (BehaviourNumber == 0)
-            {
-                HorizontalSwimBehaviour();
-            }
-
             if (Newloop == true)
             {
                 StartHX = tokenPosition.X;
@@ -186,6 +181,12 @@ namespace FishORama
                 FinishTime = StartTime + DateTime.Now.Second;
                 Newloop = false;
             }
+
+            if (BehaviourNumber == 0)
+            {
+                HorizontalSwimBehaviour();
+            }
+
 
             #region Hungry
             if (BehaviourNumber == 3)
