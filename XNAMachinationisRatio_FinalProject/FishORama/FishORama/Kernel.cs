@@ -168,6 +168,16 @@ namespace FishORama
             lib.ImportAsset(A);
 
             // Create a new graphic asset for the first progress marker visuals using class X2DAsset.
+            A = new X2DAsset("SignalVisuals", "Signal").
+                UVOriginAt(64, 64).
+                UVTopLeftCornerAt(0, 0).
+                Width(128).
+                Height(128);
+
+            // Import first marker visual asset in the library
+            lib.ImportAsset(A);
+
+            // Create a new graphic asset for the first progress marker visuals using class X2DAsset.
             A = new X2DAsset("MarkerVisuals1", "Marker1").
                 UVOriginAt(32, 15).
                 UVTopLeftCornerAt(0, 0).
@@ -381,7 +391,7 @@ namespace FishORama
             }
 
             SubmarineToken Submarine = new SubmarineToken("Submarine", aquarium);
-            tokenPos = new Vector3(-500, 0, 1);
+            tokenPos = new Vector3(-50, 0, 1);
             mScene.Place(Submarine, tokenPos);
 
         

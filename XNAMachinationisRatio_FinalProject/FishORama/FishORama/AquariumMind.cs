@@ -119,7 +119,7 @@ namespace FishORama
         public override void Update(ref GameTime pGameTime)
         {
             CheckLeftClickBehavior();
-            
+            CheckRightClickBehavior();
         }
 
 
@@ -130,7 +130,6 @@ namespace FishORama
         /// </summary>
         public void CheckLeftClickBehavior()
         {
-
             // If the user presses the mouse left button, insert a chicken leg at the click position.
             // The chicken leg is inserted only if no chicken leg is already in the aquarium.
             if ((Mouse.GetState().LeftButton == ButtonState.Pressed) && (mAquarium.ChickenLeg == null))
@@ -167,7 +166,27 @@ namespace FishORama
 
                     this.mAquarium.Kernel.Scene.Place(mAquarium.ChickenLeg, legPos);
                 }
-                
+            }
+        }
+         public void CheckRightClickBehavior()
+        {
+            if ((Mouse.GetState().RightButton == ButtonState.Pressed) && (mAquarium.Signal == null))
+            {
+                Vector2 mouseClickPosR = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);    // Read mouse click position in camera coordinates.
+                Vector3 SignalPos = this.mAquarium.Kernel.Camera.CameraToWorld(mouseClickPosR);     // Convert to world coordinates.
+
+                // If click happened within the aquarium, insert chicken leg.
+                if ((Math.Abs(SignalPos.X) < mAquarium.Width / 2) && (Math.Abs(SignalPos.Y) < mAquarium.Height / 2))
+                {
+                    /*
+                     * Create and insert chicken leg in the scene.
+                     */
+                    mAquarium.Signal = new SignalToken("Signal");
+
+                    SignalPos.Z = 3;
+
+                    this.mAquarium.Kernel.Scene.Place(mAquarium.Signal, SignalPos);
+                }
 
             }
         }

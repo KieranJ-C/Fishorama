@@ -113,7 +113,7 @@ namespace FishORama
         // Reference to the chicken leg. Required to allow the piranha
         // reaching it.
         private ChickenLegToken mChickenLeg = null;
-
+        private SignalToken mSignal = null;
         public OrangeFishToken[] mOrangeFish = new OrangeFishToken[10];
 
         #endregion
@@ -143,6 +143,14 @@ namespace FishORama
         {
             get { return mChickenLeg; }
             set { mChickenLeg = value; }
+        }
+        /// <summary>
+        /// Get/set reference to Signal.
+        /// </summary>
+        public SignalToken Signal
+        {
+            get { return mSignal; }
+            set { mSignal = value; }
         }
 
         /// <summary>
@@ -261,6 +269,14 @@ namespace FishORama
         {
             this.mKernel.Scene.Remove(mChickenLeg);
             mChickenLeg = null;
+        }
+        /// <summary>
+        /// Remove Signal from aquarium.
+        /// </summary>
+        public void RemoveSignal()
+        {
+            this.mKernel.Scene.Remove(mSignal);
+            mSignal = null;
         }
 
         #endregion
