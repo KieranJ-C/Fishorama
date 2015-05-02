@@ -259,7 +259,7 @@ namespace FishORama
 
             // Create Submarine visuals using class X2DAsset.
             A = new X2DAsset("SubmarineVisuals", "Submarine").
-                UVOriginAt(32, 64).
+                UVOriginAt(64, 32).
                 UVTopLeftCornerAt(0, 0).
                 Width(128).
                 Height(64);
@@ -267,6 +267,15 @@ namespace FishORama
             // Import Submarine visual asset in the library
             lib.ImportAsset(A);
 
+            // Create a new graphic asset  for the Football visuals using class X2DAsset.
+            A = new X2DAsset("FootballVisuals", "Football").
+                UVOriginAt(32, 32).
+                UVTopLeftCornerAt(0, 0).
+                Width(64).
+                Height(64);
+
+            // Import Football visual asset in the library
+            lib.ImportAsset(A);
 
             // Return library.
             return lib;
@@ -362,7 +371,7 @@ namespace FishORama
 
             for (int i = 0; i < Blist.Count; i++)
             {
-                float x = -1000;
+                float x = fishPos.X;
                 float y = fishPos.Y + (i * 4);
                 float z = 2;
                 tokenPos = new Vector3(x, y, z);
@@ -391,8 +400,12 @@ namespace FishORama
             }
 
             SubmarineToken Submarine = new SubmarineToken("Submarine", aquarium);
-            tokenPos = new Vector3(-50, 0, 1);
+            tokenPos = new Vector3(-500, 0, 1);
             mScene.Place(Submarine, tokenPos);
+
+            FootballToken Football = new FootballToken("Football", aquarium);
+            tokenPos = new Vector3(0, -320, 1);
+            mScene.Place(Football, tokenPos);
 
         
  }  

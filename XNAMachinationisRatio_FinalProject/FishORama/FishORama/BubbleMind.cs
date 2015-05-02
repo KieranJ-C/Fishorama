@@ -33,7 +33,6 @@ namespace FishORama
         #endregion
 
         #region Properties
-
         public AquariumToken Aquarium
         {
             set { mAquarium = value; }
@@ -71,29 +70,6 @@ namespace FishORama
         #endregion
 
         #region Methods
-
-        /// <summary>
-        /// AI Update method.
-        /// </summary>
-        /// <param name="pGameTime">Game time</param>
-
-        /*public void HorizontalSwimBehaviour()
-        {
-            Vector3 tokenPosition = this.PossessedToken.Position;
-            tokenPosition.X = tokenPosition.X + (mSpeed * mFacingDirection);
-            this.PossessedToken.Position = tokenPosition;
-            if (tokenPosition.X >= 400 || tokenPosition.X <= -400)
-            {
-                mFacingDirection = -mFacingDirection;
-            }
-
-
-            this.PossessedToken.Orientation = new Vector3(mFacingDirection,`
-                                                        this.PossessedToken.Orientation.Y,
-                                                        this.PossessedToken.Orientation.Z);
-        }*/
-
-
         public void BubbleRespawn()
         {
             
@@ -154,11 +130,6 @@ namespace FishORama
 
                BubbleRespawn();
            }
-
-
-            
-
-
 
         }
         #endregion
