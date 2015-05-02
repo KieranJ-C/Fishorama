@@ -54,7 +54,7 @@ namespace FishORama
         public override void Update(ref GameTime pGameTime)
         {
            Vector3 tokenPosition = this.PossessedToken.Position;
-           tokenPosition.X = tokePosition.X + 5;
+           tokenPosition.X = tokenPosition.X + 5;
            this.PossessedToken.Position = tokenPosition;
         }
         #endregion
