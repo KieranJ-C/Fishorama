@@ -404,7 +404,7 @@ namespace FishORama
             mScene.Place(Submarine, tokenPos);
 
             FootballToken Football = new FootballToken("Football", aquarium);
-            tokenPos = new Vector3(0, -320, 1);
+            tokenPos = new Vector3(0, -260, 1);
             mScene.Place(Football, tokenPos);
 
         

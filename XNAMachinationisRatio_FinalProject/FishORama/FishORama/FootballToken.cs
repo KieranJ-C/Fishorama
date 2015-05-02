@@ -12,7 +12,7 @@ namespace FishORama
     {
         #region Data Members
         private AquariumToken mAquarium;  // Reference to the aquarium in which the creature lives.
-        //private ChickenLegMind mMind;       // Explicit reference to the mind the token is using to enact its behaviors.
+        private FootballMind mMind;       // Explicit reference to the mind the token is using to enact its behaviors.
         #endregion
 
         #region Properties
@@ -37,7 +37,7 @@ namespace FishORama
             // the name of the graphic asset to be used ("ChickenLegVisuals" in this case)
             // to the property 'GraphicProperties.AssetID' of the token.
             this.GraphicProperties.AssetID = "FootballVisuals";
-            mMind.Aquarium = mAquarium; 
+           // mMind.Aquarium = mAquarium; 
         }
 
         #endregion
