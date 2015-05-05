@@ -37,7 +37,9 @@ namespace FishORama
             // the name of the graphic asset to be used ("ChickenLegVisuals" in this case)
             // to the property 'GraphicProperties.AssetID' of the token.
             this.GraphicProperties.AssetID = "FootballVisuals";
-           // mMind.Aquarium = mAquarium; 
+            FootballMind myMind = new FootballMind(this);
+            mMind = myMind;     // Store explicit reference to mind being used.
+            mMind.Aquarium = mAquarium; 
         }
 
         #endregion

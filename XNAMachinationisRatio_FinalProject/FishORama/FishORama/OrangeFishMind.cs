@@ -6,63 +6,26 @@ using Microsoft.Xna.Framework;              // Required to use XNA features.
 using XNAMachinationisRatio;                // Required to use the XNA Machinationis Ratio Engine general features.
 using XNAMachinationisRatio.AI;             // Required to use the XNA Machinationis Ratio general AI features.
 
-
-/* LERNING PILL: XNAMachinationisRatio Engine
- * XNAMachinationisRatio is an engine that allows implementing
- * simulations and games based on XNA, simplifying the use of XNA
- * and adding features not directly available in XNA.
- * XNAMachinationisRatio is a work in progress.
- * The engine works "under the hood", taking care of many features
- * of an interactive simulation automatically, thus minimizing
- * the amount of code that developers have to write.
- * 
- * In order to use the engine, the application main class (Kernel, in the
- * case of FishO'Rama) creates, initializes and stores
- * an instance of class Engine in one of its data members.
- * 
- * The classes comprised in the  XNA Machinationis Ratio engine and the
- * related functionalities can be accessed from any of your XNA project
- * source code files by adding appropriate 'using' statements at the beginning of
- * the file. 
- * 
- */
-
 namespace FishORama
 {
-    /* LEARNING PILL: Token behaviors in the XNA Machinationis Ratio engine
-     * Some simulation tokens may need to enact specific behaviors in order to
-     * participate in the simulation. The XNA Machinationis Ratio engine
-     * allows a token to enact a behavior by associating an artificial intelligence
-     * mind to it. Mind objects are created from subclasses of the class AIPlayer
-     * included in the engine. In order to associate a mind to a token, a new
-     * mind object must be created, passing to the constructor of the mind a reference
-     * of the object that must be associated with the mind. This must be done in
-     * the DefaultProperties method of the token.
-     * 
-     * Hence, every time a new tipe of AI mind is required, a new class derived from
-     * AIPlayer must be created, and an instance of it must be associated to the
-     * token classes that need it.
-     * 
-     * Mind objects enact behaviors through the method Update (see below for further details). 
-     */
     class OrangeFishMind : AIPlayer
     {
         #region Data Members
 
-        // This mind needs to interact with the token which it possesses, 
-        // since it needs to know where are the aquarium's boundaries.
-        // Hence, the mind needs a "link" to the aquarium, which is why it stores in
-        // an instance variable a reference to its aquarium.
         private AquariumToken mAquarium;        // Reference to the aquarium in which the creature lives.
-
         private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
         private float mSpeed = 5;
         private double currTime;
         private bool Newloop = true;
         private float StartHX;
         private double StartTime;
-        private double FinishTime;
+        private double TwoFinishTime;
+        private double ThreeFinishTime;
         private int BehaviourNumber = 3;
+        Random RandNumb = new Random();
+        private int SinkPix;
+        private int TPixSink;
+        private float DashPix;
 
 
         #endregion
@@ -99,21 +62,6 @@ namespace FishORama
         #endregion
 
         #region Methods
-
-        /* LEARNING PILL: The AI update method.
-         * Mind objects enact behaviors through the method Update. This method is
-         * automatically invoked by the engine, periodically, 'under the hood'. This can be
-         * be better understood that the engine asks to all the available AI-based tokens:
-         * "Would you like to do anything at all?" And this 'asking' is done through invoking
-         * the Update method of each mind available in the system. The response is the execution
-         * of the Update method of each mind , and all the methods possibly triggered by Update.
-         * 
-         * Although the Update method could invoke other methods if needed, EVERY
-         * BEHAVIOR STARTS from Update. If a behavior is not directly coded in Updated, or in
-         * a method invoked by Update, then it is IGNORED.
-         * 
-         */
-
         /// <summary>
         /// AI Update method.
         /// </summary>
@@ -127,7 +75,14 @@ namespace FishORama
             if (tokenPosition.X >= 350 || tokenPosition.X <= -350)
             {
                 mFacingDirection = -mFacingDirection;
-
+                if (tokenPosition.X >= 350)
+                {
+                    tokenPosition.X = 344;
+                }
+                if (tokenPosition.X <= -350)
+                {
+                    tokenPosition.X = -344;
+                }
             }
 
 
@@ -141,7 +96,7 @@ namespace FishORama
 
             Vector3 tokenPosition = this.PossessedToken.Position;
             tokenPosition.X = tokenPosition.X + (mSpeed * mFacingDirection);
-            if (tokenPosition.X >= StartHX + 75 || tokenPosition.X <= StartHX - 75)
+            if (tokenPosition.X >= StartHX + 75 || tokenPosition.X <= StartHX - 75 || tokenPosition.X >= 350 || tokenPosition.X <= -350)
             {
                 mFacingDirection = -mFacingDirection;
 
@@ -164,32 +119,71 @@ namespace FishORama
                                                         this.PossessedToken.Orientation.Z);
             if (tokenPosition.Y >= 250)
             {
-                BehaviourNumber = 0;
+                Newloop = true;
+                BehaviourNumber = 4;
             }
         }
-        
+
+        public void RandomBehvaiour()
+        {
+            int BehaviourRandomNum = RandNumb.Next(1, 5);
+            BehaviourNumber = BehaviourRandomNum;
+        }
+
+        public void SinkPixRand()
+        {
+            int TPixSinkNum = RandNumb.Next(50, 150);
+            TPixSink = TPixSinkNum;
+        }
 
         public override void Update(ref GameTime pGameTime)
         {
             Vector3 tokenPosition = this.PossessedToken.Position;
             currTime = pGameTime.TotalGameTime.TotalSeconds;
 
+            #region NewLoop
             if (Newloop == true)
             {
                 StartHX = tokenPosition.X;
                 StartTime = pGameTime.TotalGameTime.TotalSeconds;
-                FinishTime = StartTime + DateTime.Now.Second;
+                TwoFinishTime = StartTime + 15;
+                ThreeFinishTime = StartTime + 5;
+                SinkPixRand();
+                DashPix = 0;
+                SinkPix = 0;
                 Newloop = false;
             }
+            #endregion
 
-            if (BehaviourNumber == 0)
+            #region Dash
+            if (BehaviourNumber == 1)
+            {
+                mSpeed += 10;
+                DashPix += mSpeed;
+                HorizontalSwimBehaviour();
+                mSpeed -= 10;
+                if(DashPix >= 250)
+                {
+                    RandomBehvaiour();
+                    Newloop = true;
+                }
+            }
+            #endregion
+
+            #region Acceleration
+            else if (BehaviourNumber == 2)
             {
                 HorizontalSwimBehaviour();
+                if (currTime >= TwoFinishTime)
+                {
+                    RandomBehvaiour();
+                    Newloop = true;
+                }
             }
-
+            #endregion
 
             #region Hungry
-            if (BehaviourNumber == 3)
+            else if (BehaviourNumber == 3)
             {
                 this.PossessedToken.Position = tokenPosition;
                 if (tokenPosition.X <= StartHX + 75 || tokenPosition.X >= StartHX - 75)
@@ -201,23 +195,39 @@ namespace FishORama
                 {
                     VerticalSwimBehaviour();
                 }
-
-
+                if (currTime >= ThreeFinishTime)
+                {
+                    RandomBehvaiour();
+                    Newloop = true;
+                }
             }
             #endregion
 
-            if (BehaviourNumber == 4)
+            #region Sink
+            else if (BehaviourNumber == 4)
             {
-                this.PossessedToken.Position = tokenPosition;
-                tokenPosition.Y += -5;
-                if (tokenPosition.Y < -360)
+                if (tokenPosition.Y >= -240)
                 {
-                    BehaviourNumber = 0;
+                    tokenPosition.Y -= 5;
                 }
+                this.PossessedToken.Position = tokenPosition;
+                SinkPix += 5;
 
+                if(SinkPix >= TPixSink)
+                {
+                    RandomBehvaiour();
+                    Newloop = true;
+                }
+                else if (tokenPosition.Y <= -240)
+                {
+                    RandomBehvaiour();
+                    Newloop = true;
+                }
             }
-        }
-        #endregion
-        }
-    }
 
+            #endregion
+        }
+
+    }
+    }
+        #endregion
