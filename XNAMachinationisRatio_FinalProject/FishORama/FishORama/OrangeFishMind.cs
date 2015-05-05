@@ -21,7 +21,7 @@ namespace FishORama
         private double StartTime;
         private double TwoFinishTime;
         private double ThreeFinishTime;
-        private int BehaviourNumber = 3;
+        private int BehaviourNumber = 0;
         Random RandNumb = new Random();
         private int SinkPix;
         private int TPixSink;
@@ -117,11 +117,6 @@ namespace FishORama
             this.PossessedToken.Orientation = new Vector3(mFacingDirection,
                                                         this.PossessedToken.Orientation.Y,
                                                         this.PossessedToken.Orientation.Z);
-            if (tokenPosition.Y >= 250)
-            {
-                Newloop = true;
-                BehaviourNumber = 4;
-            }
         }
 
         public void RandomBehvaiour()
@@ -155,6 +150,42 @@ namespace FishORama
             }
             #endregion
 
+            #region Default
+
+            if (BehaviourNumber == 0)
+            {
+                if (tokenPosition.X == 0 && tokenPosition.Y == 0)
+                {
+                    RandomBehvaiour();
+                    Newloop = true;
+                }
+
+                if (tokenPosition.X > 0)
+                {
+                    tokenPosition.X--;
+                    mFacingDirection = -1;
+                }
+                else if (tokenPosition.X < 0)
+                {
+                    tokenPosition.X++;
+                    mFacingDirection = 1;
+                }
+                if (tokenPosition.Y > 0)
+                {
+                    tokenPosition.Y--;
+                }
+                else if (tokenPosition.Y < 0)
+                {
+                    tokenPosition.Y++;
+                }
+                this.PossessedToken.Position = tokenPosition;
+                this.PossessedToken.Orientation = new Vector3(mFacingDirection,
+                                                            this.PossessedToken.Orientation.Y,
+                                                            this.PossessedToken.Orientation.Z);
+            }
+
+            #endregion
+
             #region Dash
             if (BehaviourNumber == 1)
             {
@@ -164,8 +195,7 @@ namespace FishORama
                 mSpeed -= 10;
                 if(DashPix >= 250)
                 {
-                    RandomBehvaiour();
-                    Newloop = true;
+                    BehaviourNumber = 0;
                 }
             }
             #endregion
@@ -176,8 +206,7 @@ namespace FishORama
                 HorizontalSwimBehaviour();
                 if (currTime >= TwoFinishTime)
                 {
-                    RandomBehvaiour();
-                    Newloop = true;
+                    BehaviourNumber = 0;
                 }
             }
             #endregion
@@ -197,8 +226,7 @@ namespace FishORama
                 }
                 if (currTime >= ThreeFinishTime)
                 {
-                    RandomBehvaiour();
-                    Newloop = true;
+                    BehaviourNumber = 0;
                 }
             }
             #endregion
@@ -215,13 +243,11 @@ namespace FishORama
 
                 if(SinkPix >= TPixSink)
                 {
-                    RandomBehvaiour();
-                    Newloop = true;
+                    BehaviourNumber = 0;
                 }
                 else if (tokenPosition.Y <= -240)
                 {
-                    RandomBehvaiour();
-                    Newloop = true;
+                    BehaviourNumber = 0;
                 }
             }
 

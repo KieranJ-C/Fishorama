@@ -49,10 +49,6 @@ namespace FishORama
     {
         #region Data Members
 
-        // This mind needs to interact with the token which it possesses, 
-        // since it needs to know where are the aquarium's boundaries.
-        // Hence, the mind needs a "link" to the aquarium, which is why it stores in
-        // an instance variable a reference to its aquarium.
         private AquariumToken mAquarium;        // Reference to the aquarium in which the creature lives.
 
         private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
@@ -170,6 +166,17 @@ namespace FishORama
             
 
             Vector3 tokenPosition = this.PossessedToken.Position;
+            if (mAquarium.ChickenLeg != null)
+            {
+                if (tokenPosition.X <= mAquarium.ChickenLeg.Position.X)
+                {
+                    mFacingDirection = -1;
+                }
+                else if (tokenPosition.X > mAquarium.ChickenLeg.Position.X)
+                {
+                    mFacingDirection = 1;
+                }
+            }
             this.PossessedToken.Position = tokenPosition;
             HorizontalSwimBehaviour();
             if (this.PossessedToken.Name == "seahorse0" && justSpawned == true)
