@@ -168,6 +168,10 @@ namespace FishORama
             Vector3 tokenPosition = this.PossessedToken.Position;
             if (mAquarium.ChickenLeg != null)
             {
+                mSpeed ++;
+            }
+            if (mAquarium.ChickenLeg != null && tokenPosition.X < 400 && tokenPosition.X > -400)
+            {
                 if (tokenPosition.X <= mAquarium.ChickenLeg.Position.X)
                 {
                     mFacingDirection = -1;
@@ -212,8 +216,11 @@ namespace FishORama
                 VerticalSwimBehaviourFall();
             }
 
-
-
+            if (mAquarium.ChickenLeg != null)
+            {
+                mSpeed --;
+            }
+            justSpawned = false;
         }
         #endregion
     }

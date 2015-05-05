@@ -114,7 +114,7 @@ namespace FishORama
         // reaching it.
         private ChickenLegToken mChickenLeg = null;
         private SignalToken mSignal = null;
-        public OrangeFishToken[] mOrangeFish = new OrangeFishToken[10];
+        //public OrangeFishToken[] mOrangeFish = new OrangeFishToken[10];
         #endregion
 
         #region Properties

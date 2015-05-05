@@ -19,7 +19,6 @@ namespace FishORama
         private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
         Random speed = new Random();
         private int mSpeed;
-        //private int mSpeed = 5;
         private float startY;
         private float tokenPos;
         private bool justSpawned = true;
@@ -61,10 +60,6 @@ namespace FishORama
             startY = tokenPosition.Y;
             
             mSpeed = speed.Next(1, 5);
-            
-
-
-
         }
 
         #endregion
@@ -72,7 +67,6 @@ namespace FishORama
         #region Methods
         public void BubbleRespawn()
         {
-            
             Vector3 tokenPosition = this.PossessedToken.Position;
             this.PossessedToken.Position = mOrangeFish.Position ;
             startY = mOrangeFish.Position.Y;
