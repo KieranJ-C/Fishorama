@@ -19,6 +19,7 @@ namespace FishORama
         private bool Newloop = true;
         private float StartHX;
         private double StartTime;
+        private double FinishTime;
         private double TwoFinishTime;
         private double ThreeFinishTime;
         private int BehaviourNumber = 0;
@@ -121,7 +122,7 @@ namespace FishORama
 
         public void RandomBehvaiour()
         {
-            int BehaviourRandomNum = RandNumb.Next(1, 5);
+            int BehaviourRandomNum = RandNumb.Next(1, 6);
             BehaviourNumber = BehaviourRandomNum;
         }
 
@@ -141,6 +142,7 @@ namespace FishORama
             {
                 StartHX = tokenPosition.X;
                 StartTime = pGameTime.TotalGameTime.TotalSeconds;
+                FinishTime = StartTime + 2;
                 TwoFinishTime = StartTime + 15;
                 ThreeFinishTime = StartTime + 5;
                 SinkPixRand();
@@ -150,7 +152,7 @@ namespace FishORama
             }
             #endregion
 
-            #region Default
+            #region Reset
 
             if (BehaviourNumber == 0)
             {
@@ -195,7 +197,7 @@ namespace FishORama
                 mSpeed -= 10;
                 if(DashPix >= 250)
                 {
-                    BehaviourNumber = 0;
+                    BehaviourNumber = 5;
                 }
             }
             #endregion
@@ -206,7 +208,7 @@ namespace FishORama
                 HorizontalSwimBehaviour();
                 if (currTime >= TwoFinishTime)
                 {
-                    BehaviourNumber = 0;
+                    BehaviourNumber = 5;
                 }
             }
             #endregion
@@ -226,7 +228,7 @@ namespace FishORama
                 }
                 if (currTime >= ThreeFinishTime)
                 {
-                    BehaviourNumber = 0;
+                    BehaviourNumber = 5;
                 }
             }
             #endregion
@@ -243,13 +245,28 @@ namespace FishORama
 
                 if(SinkPix >= TPixSink)
                 {
-                    BehaviourNumber = 0;
+                    BehaviourNumber = 5;
                 }
                 else if (tokenPosition.Y <= -240)
                 {
-                    BehaviourNumber = 0;
+                    BehaviourNumber = 5;
                 }
             }
+
+            #endregion
+
+            #region Default
+            else if (BehaviourNumber == 5)
+            {
+                HorizontalSwimBehaviour();
+                if (currTime >= FinishTime)
+                {
+                    Newloop = true;
+                    RandomBehvaiour();
+                }
+            }
+
+
 
             #endregion
         }
