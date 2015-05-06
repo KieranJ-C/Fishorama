@@ -27,7 +27,7 @@ namespace FishORama
         private int SinkPix;
         private int TPixSink;
         private float DashPix;
-
+        private float AccelTime;
 
         #endregion
 
@@ -205,6 +205,10 @@ namespace FishORama
             #region Acceleration
             else if (BehaviourNumber == 2)
             {
+                if (AccelTime - currTime == 1)
+                {
+                    mSpeed++;
+                }
                 HorizontalSwimBehaviour();
                 if (currTime >= TwoFinishTime)
                 {

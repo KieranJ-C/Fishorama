@@ -220,7 +220,6 @@ C:\Users\JANK1_14\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\
 C:\Users\JANK1_14\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\FishORama.pdb
 C:\Users\JANK1_14\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\XNAMachinationisRatio.dll
 C:\Users\JANK1_14\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\XNAMachinationisRatio.pdb
-C:\Users\JANK1_14\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\obj\x86\Debug\FishORama.csprojResolveAssemblyReference.cache
 C:\Users\JANK1_14\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\JANK1_14\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\obj\x86\Debug\FishORama.exe
 C:\Users\JANK1_14\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\obj\x86\Debug\FishORama.pdb
@@ -296,3 +295,5 @@ C:\Users\Kieran\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\Fi
 C:\Users\Kieran\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Kieran\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\obj\x86\Debug\FishORama.exe
 C:\Users\Kieran\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\obj\x86\Debug\FishORama.pdb
+C:\Users\JANK1_14\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\Signal.xnb
+C:\Users\JANK1_14\Documents\GitHub\Fishorama\XNAMachinationisRatio_FinalProject\FishORama\FishORama\bin\x86\Debug\Content\Football.xnb

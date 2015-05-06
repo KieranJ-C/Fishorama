@@ -93,6 +93,12 @@ namespace FishORama
                    tokenPosition.X += 5;
                }
            }
+           if (gamePadState.IsConnected == false)
+           {
+               ResumePoint = tokenPosition.X;
+               tokenPosition.X = 1000;
+               FootballOnStage = false;
+           }
            this.PossessedToken.Position = tokenPosition;
         }
         #endregion
