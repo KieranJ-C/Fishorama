@@ -8,11 +8,11 @@ using XNAMachinationisRatio;        // Required to use the XNA Machinationis Rat
 namespace FishORama
 {
 
-    class FootballToken : X2DToken
+    class TargetToken : X2DToken
     {
         #region Data Members
         private AquariumToken mAquarium;  // Reference to the aquarium in which the creature lives.
-        private FootballMind mMind;       // Explicit reference to the mind the token is using to enact its behaviors.
+        private TargetMind mMind;       // Explicit reference to the mind the token is using to enact its behaviors.
         #endregion
 
         #region Properties
@@ -22,7 +22,7 @@ namespace FishORama
         #region Constructors
         /// <param name="pTokenName">Name of the token.</param>
         /// <param name="pAquarium">Reference to the aquarium in which the token lives.</param>
-        public FootballToken(String pTokenName, AquariumToken pAquarium)
+        public TargetToken(String pTokenName, AquariumToken pAquarium)
             : base(pTokenName)
         {
             mAquarium = pAquarium;          // Store reference to aquarium in which the creature is living.
@@ -37,7 +37,7 @@ namespace FishORama
             // the name of the graphic asset to be used ("ChickenLegVisuals" in this case)
             // to the property 'GraphicProperties.AssetID' of the token.
             this.GraphicProperties.AssetID = "FootballVisuals";
-            FootballMind myMind = new FootballMind(this);
+            TargetMind myMind = new TargetMind(this);
             mMind = myMind;     // Store explicit reference to mind being used.
             mMind.Aquarium = mAquarium; 
         }

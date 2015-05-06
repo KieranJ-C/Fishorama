@@ -68,7 +68,7 @@ namespace FishORama
             if (this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
             {
                 mFacingDirection = -mFacingDirection;
-                mSpeed = rnd.Next(1, 6);
+                mSpeed = rnd.Next(5, 11);
             }
 
 
@@ -146,20 +146,20 @@ namespace FishORama
             HorizontalSwimBehaviour();
             if (this.PossessedToken.Name == "seahorse0" && justSpawned == true)
             {
-                mSpeed = rnd.Next(1, 6);
+                mSpeed = rnd.Next(5, 11);
             }
 
             if (this.PossessedToken.Name == "seahorse1" && justSpawned == true)
             {
-                mSpeed = rnd.Next(1, 6);
-                mSpeed = rnd.Next(1, 6);
+                mSpeed = rnd.Next(5, 11);
+                mSpeed = rnd.Next(5, 11);
             }
 
             if (this.PossessedToken.Name == "seahorse2" && justSpawned == true)
             {
-                mSpeed = rnd.Next(1, 6);
-                mSpeed = rnd.Next(1, 6);
-                mSpeed = rnd.Next(1, 6);
+                mSpeed = rnd.Next(5, 11);
+                mSpeed = rnd.Next(5, 11);
+                mSpeed = rnd.Next(5, 11);
             }
 
             if (justSpawned == true)
@@ -189,7 +189,7 @@ namespace FishORama
 
             if (mAquarium.ChickenLeg != null)
             {
-                mSpeed = 5;
+                mSpeed -= 5;
             }
             justSpawned = false;
 

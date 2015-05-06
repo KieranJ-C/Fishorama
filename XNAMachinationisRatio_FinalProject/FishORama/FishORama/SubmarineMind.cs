@@ -15,7 +15,7 @@ namespace FishORama
         private AquariumToken mAquarium;        // Reference to the aquarium in which the creature lives.
 
         private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
-        private float mSpeed = 5;
+        private float mSpeed = 10;
         private bool SigX = false;
         private bool SigY = false;
         private bool Rest = false;

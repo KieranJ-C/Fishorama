@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace FishORama
 {
-    class FootballMind : AIPlayer
+    class TargetMind : AIPlayer
     {
         #region Data Members
 
@@ -39,7 +39,7 @@ namespace FishORama
         /// Default constructor.
         /// </summary>
         /// <param name="pToken">Token to be associated with the mind.</param>
-        public FootballMind(X2DToken pToken)
+        public TargetMind(X2DToken pToken)
         {
 
             this.Possess(pToken);       // Possess token.

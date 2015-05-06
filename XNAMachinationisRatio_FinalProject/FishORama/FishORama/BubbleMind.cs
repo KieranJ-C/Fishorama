@@ -60,7 +60,7 @@ namespace FishORama
             Vector3 tokenPosition = this.PossessedToken.Position;
             startY = tokenPosition.Y;
             
-            mSpeed = speed.Next(1, 5);
+            mSpeed = speed.Next(3, 6);
         }
 
         #endregion
@@ -76,33 +76,33 @@ namespace FishORama
             #region Individual Bubble Checks
             if (this.PossessedToken.Name == "Bubble0" && justSpawned == true)
             {
-                mSpeed = randomSpeed.Next(1, 5);
+                mSpeed = randomSpeed.Next(3, 6);
             }
             if (this.PossessedToken.Name == "Bubble1" && justSpawned == true)
             {
-                mSpeed = randomSpeed.Next(1, 5);
-                mSpeed = randomSpeed.Next(1, 5);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
             }
             if (this.PossessedToken.Name == "Bubble2" && justSpawned == true)
             {
-                mSpeed = randomSpeed.Next(1, 5);
-                mSpeed = randomSpeed.Next(1, 5);
-                mSpeed = randomSpeed.Next(1, 5);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
             }
             if (this.PossessedToken.Name == "Bubble3" && justSpawned == true)
             {
-                mSpeed = randomSpeed.Next(1, 5);
-                mSpeed = randomSpeed.Next(1, 5);
-                mSpeed = randomSpeed.Next(1, 5);
-                mSpeed = randomSpeed.Next(1, 5);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
             }
             if (this.PossessedToken.Name == "Bubble4" && justSpawned == true)
             {
-                mSpeed = randomSpeed.Next(1, 5);
-                mSpeed = randomSpeed.Next(1, 5);
-                mSpeed = randomSpeed.Next(1, 5);
-                mSpeed = randomSpeed.Next(1, 5);
-                mSpeed = randomSpeed.Next(1, 5);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
             }
             #endregion
             
