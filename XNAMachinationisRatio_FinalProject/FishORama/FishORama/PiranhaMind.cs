@@ -80,6 +80,10 @@ namespace FishORama
         public void Feeding()
         {
             Vector3 tokenPosition = this.PossessedToken.Position;
+            if (currTime >= FinishTime)
+            {
+                justAte = false;
+            }
             if (justAte)
             {
                 mSpeed = 1;

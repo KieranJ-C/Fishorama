@@ -22,6 +22,7 @@ namespace FishORama
         private float startY;
         private float tokenPos;
         private bool justSpawned = true;
+        private double i = 0;
         Random randomSpeed = new Random();
 
         I2DScene mScene;
@@ -111,7 +112,9 @@ namespace FishORama
         public override void Update(ref GameTime pGameTime)
         {
            Vector3 tokenPosition = this.PossessedToken.Position;
-           tokenPosition.Y = (tokenPosition.Y + mSpeed);
+            i += 0.1;
+           tokenPosition.Y = tokenPosition.Y + (mSpeed);
+           tokenPosition.X = tokenPosition.X + ((float)Math.Sin(i));
            this.PossessedToken.Position = tokenPosition;
            if (justSpawned == true)
            {

@@ -7,44 +7,8 @@ using XNAMachinationisRatio;                // Required to use the XNA Machinati
 using XNAMachinationisRatio.AI;             // Required to use the XNA Machinationis Ratio general AI features.
 
 
-/* LERNING PILL: XNAMachinationisRatio Engine
- * XNAMachinationisRatio is an engine that allows implementing
- * simulations and games based on XNA, simplifying the use of XNA
- * and adding features not directly available in XNA.
- * XNAMachinationisRatio is a work in progress.
- * The engine works "under the hood", taking care of many features
- * of an interactive simulation automatically, thus minimizing
- * the amount of code that developers have to write.
- * 
- * In order to use the engine, the application main class (Kernel, in the
- * case of FishO'Rama) creates, initializes and stores
- * an instance of class Engine in one of its data members.
- * 
- * The classes comprised in the  XNA Machinationis Ratio engine and the
- * related functionalities can be accessed from any of your XNA project
- * source code files by adding appropriate 'using' statements at the beginning of
- * the file. 
- * 
- */
-
 namespace FishORama
 {
-    /* LEARNING PILL: Token behaviors in the XNA Machinationis Ratio engine
-     * Some simulation tokens may need to enact specific behaviors in order to
-     * participate in the simulation. The XNA Machinationis Ratio engine
-     * allows a token to enact a behavior by associating an artificial intelligence
-     * mind to it. Mind objects are created from subclasses of the class AIPlayer
-     * included in the engine. In order to associate a mind to a token, a new
-     * mind object must be created, passing to the constructor of the mind a reference
-     * of the object that must be associated with the mind. This must be done in
-     * the DefaultProperties method of the token.
-     * 
-     * Hence, every time a new tipe of AI mind is required, a new class derived from
-     * AIPlayer must be created, and an instance of it must be associated to the
-     * token classes that need it.
-     * 
-     * Mind objects enact behaviors through the method Update (see below for further details). 
-     */
     class SeahorseMind : AIPlayer
     {
         #region Data Members
@@ -56,6 +20,7 @@ namespace FishORama
         private float startY;
         private Boolean CanRise = true;
         private bool justSpawned = true;
+        static Random rnd = new Random();
 
         #endregion
 
@@ -79,11 +44,7 @@ namespace FishORama
         /// <param name="pToken">Token to be associated with the mind.</param>
         public SeahorseMind(X2DToken pToken)
         {
-            /* LEARNING PILL: associating a mind with a token
-             * In order for a mind to control a token, it must be associated with the token.
-             * This is done when the mind is constructed, using the method Possess inherited
-             * from class AIPlayer.
-             */
+
             this.Possess(pToken);       // Possess token.
             mFacingDirection = 1;       // Current direction the fish is facing.
             //Vector3 tokenPosition = this.PossessedToken.Position;
@@ -93,20 +54,6 @@ namespace FishORama
         #endregion
 
         #region Methods
-
-        /* LEARNING PILL: The AI update method.
-         * Mind objects enact behaviors through the method Update. This method is
-         * automatically invoked by the engine, periodically, 'under the hood'. This can be
-         * be better understood that the engine asks to all the available AI-based tokens:
-         * "Would you like to do anything at all?" And this 'asking' is done through invoking
-         * the Update method of each mind available in the system. The response is the execution
-         * of the Update method of each mind , and all the methods possibly triggered by Update.
-         * 
-         * Although the Update method could invoke other methods if needed, EVERY
-         * BEHAVIOR STARTS from Update. If a behavior is not directly coded in Updated, or in
-         * a method invoked by Update, then it is IGNORED.
-         * 
-         */
 
         /// <summary>
         /// AI Update method.
@@ -121,6 +68,7 @@ namespace FishORama
             if (this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
             {
                 mFacingDirection = -mFacingDirection;
+                mSpeed = rnd.Next(1, 6);
             }
 
 
@@ -134,7 +82,8 @@ namespace FishORama
         {
             Vector3 tokenPosition = this.PossessedToken.Position;
             tokenPosition.Y = tokenPosition.Y + mSpeed;
-            this.PossessedToken.Position = tokenPosition;
+            
+            this.PossessedToken.Position = tokenPosition;   
             if (tokenPosition.Y >= (startY + 100))
             {
                 CanRise = false;
@@ -163,15 +112,26 @@ namespace FishORama
 
         public override void Update(ref GameTime pGameTime)
         {
-            Random rnd = new Random();
+            //Random rnd = new Random();
             
 
             Vector3 tokenPosition = this.PossessedToken.Position;
+          /*  if (tokenPosition.X >= 960 && this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
+            {
+                mFacingDirection = -1;
+                tokenPosition.X = 959;
+            }
+            if (tokenPosition.X <= -960 && this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
+            {
+                mFacingDirection = 1;
+                tokenPosition.X = -959;
+            }*/
+
             if (mAquarium.ChickenLeg != null)
             {
-                mSpeed ++;
+                mSpeed += 5;
             }
-            if (mAquarium.ChickenLeg != null && this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
+            if (mAquarium.ChickenLeg != null && this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken) == false)
             {
                 if (tokenPosition.X <= mAquarium.ChickenLeg.Position.X)
                 {
@@ -186,26 +146,36 @@ namespace FishORama
             HorizontalSwimBehaviour();
             if (this.PossessedToken.Name == "seahorse0" && justSpawned == true)
             {
-                mSpeed = rnd.Next(1, 5);
+                mSpeed = rnd.Next(1, 6);
             }
 
             if (this.PossessedToken.Name == "seahorse1" && justSpawned == true)
             {
-                mSpeed = rnd.Next(1, 5);
-                mSpeed = rnd.Next(1, 5);
+                mSpeed = rnd.Next(1, 6);
+                mSpeed = rnd.Next(1, 6);
             }
 
             if (this.PossessedToken.Name == "seahorse2" && justSpawned == true)
             {
-                mSpeed = rnd.Next(1, 5);
-                mSpeed = rnd.Next(1, 5);
-                mSpeed = rnd.Next(1, 5);
+                mSpeed = rnd.Next(1, 6);
+                mSpeed = rnd.Next(1, 6);
+                mSpeed = rnd.Next(1, 6);
             }
 
             if (justSpawned == true)
             {
                 startY = tokenPosition.Y;
                 justSpawned = false;
+            }
+            if (tokenPosition.X >= 960 && this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
+            {
+                mFacingDirection = -1;
+                tokenPosition.X = 959;
+            }
+            if (tokenPosition.X <= -960 && this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
+            {
+                mFacingDirection = 1;
+                tokenPosition.X = -959;
             }
             if (CanRise == true)
             {
@@ -219,20 +189,11 @@ namespace FishORama
 
             if (mAquarium.ChickenLeg != null)
             {
-                mSpeed --;
+                mSpeed = 5;
             }
             justSpawned = false;
 
-            if (tokenPosition.X >= 960 && this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
-            {
-                mFacingDirection = -1;
-                tokenPosition.X = 959;
-            }
-            if (tokenPosition.X <= -960 && this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
-            {
-                mFacingDirection = 1;
-                tokenPosition.X = -959;
-            }
+
 
         }
         #endregion

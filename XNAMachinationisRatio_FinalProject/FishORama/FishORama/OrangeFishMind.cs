@@ -22,12 +22,13 @@ namespace FishORama
         private double FinishTime;
         private double TwoFinishTime;
         private double ThreeFinishTime;
-        private int BehaviourNumber = 0;
+        private double FourFinishTime;
+        private int BehaviourNumber = 2;
         Random RandNumb = new Random();
         private int SinkPix;
         private int TPixSink;
         private float DashPix;
-        private float AccelTime;
+        private float i = 0;
 
         #endregion
 
@@ -137,9 +138,11 @@ namespace FishORama
                 FinishTime = StartTime + 2;
                 TwoFinishTime = StartTime + 15;
                 ThreeFinishTime = StartTime + 5;
+                FourFinishTime = StartTime + 30;
                 SinkPixRand();
                 DashPix = 0;
                 SinkPix = 0;
+                i = 0;
                 Newloop = false;
             }
             #endregion
@@ -197,15 +200,26 @@ namespace FishORama
             #region Acceleration
             else if (BehaviourNumber == 2)
             {
-                if (AccelTime - currTime == 1)
+                i++;
+                if (i == 60)
                 {
-                    mSpeed++;
+                    if (currTime < TwoFinishTime)
+                    {
+                       mSpeed++;
+                       i = 0;
+                    }
+                    if (currTime > TwoFinishTime && currTime <= FourFinishTime)
+                    {
+                        mSpeed--;
+                        i = 0;
+                    }
                 }
-                HorizontalSwimBehaviour();
-                if (currTime >= TwoFinishTime)
+                if (currTime > FourFinishTime)
                 {
                     BehaviourNumber = 5;
                 }
+                HorizontalSwimBehaviour();
+
             }
             #endregion
 
