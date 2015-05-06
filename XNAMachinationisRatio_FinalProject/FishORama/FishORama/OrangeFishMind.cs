@@ -73,17 +73,9 @@ namespace FishORama
             Vector3 tokenPosition = this.PossessedToken.Position;
             tokenPosition.X = tokenPosition.X + (mSpeed * mFacingDirection);
             this.PossessedToken.Position = tokenPosition;
-            if (tokenPosition.X >= 350 || tokenPosition.X <= -350)
+            if (this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
             {
                 mFacingDirection = -mFacingDirection;
-                if (tokenPosition.X >= 350)
-                {
-                    tokenPosition.X = 344;
-                }
-                if (tokenPosition.X <= -350)
-                {
-                    tokenPosition.X = -344;
-                }
             }
 
 
@@ -97,7 +89,7 @@ namespace FishORama
 
             Vector3 tokenPosition = this.PossessedToken.Position;
             tokenPosition.X = tokenPosition.X + (mSpeed * mFacingDirection);
-            if (tokenPosition.X >= StartHX + 75 || tokenPosition.X <= StartHX - 75 || tokenPosition.X >= 350 || tokenPosition.X <= -350)
+            if (tokenPosition.X >= StartHX + 75 || tokenPosition.X <= StartHX - 75 || this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
             {
                 mFacingDirection = -mFacingDirection;
 

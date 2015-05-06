@@ -62,7 +62,7 @@ namespace FishORama
                if (gamePadState.Buttons.Y == ButtonState.Pressed && FootballOnStage == true)
                {
                    ResumePoint = tokenPosition.X;
-                   tokenPosition.X = 1000;
+                   tokenPosition.X = 2000;
                    FootballOnStage = false;
                }
                // If the B button is pressed the football is returend to its original position
@@ -72,22 +72,22 @@ namespace FishORama
                    FootballOnStage = true;
                }
 
-               if (gamePadState.DPad.Up == ButtonState.Pressed && FootballOnStage == true && tokenPosition.Y <= 300)
+               if (gamePadState.DPad.Up == ButtonState.Pressed && FootballOnStage == true && tokenPosition.Y <= (1080/2))
                {
                    // Move up
                    tokenPosition.Y += 5;
                }
-               if (gamePadState.DPad.Down == ButtonState.Pressed && FootballOnStage == true && tokenPosition.Y >= -300)
+               if (gamePadState.DPad.Down == ButtonState.Pressed && FootballOnStage == true && tokenPosition.Y >= -(1080/2))
                {
                    // Move down
                    tokenPosition.Y -= 5;
                }
-               if (gamePadState.DPad.Left == ButtonState.Pressed && FootballOnStage == true && tokenPosition.X >= -400)
+               if (gamePadState.DPad.Left == ButtonState.Pressed && FootballOnStage == true && tokenPosition.X >= -(1920/2))
                {
                    // Move left
                    tokenPosition.X -= 5;
                }
-               if (gamePadState.DPad.Right == ButtonState.Pressed && FootballOnStage == true && tokenPosition.X <= 400)
+               if (gamePadState.DPad.Right == ButtonState.Pressed && FootballOnStage == true && tokenPosition.X <= (1920/2))
                {
                    // Move right
                    tokenPosition.X += 5;
@@ -96,7 +96,7 @@ namespace FishORama
            if (gamePadState.IsConnected == false)
            {
                ResumePoint = tokenPosition.X;
-               tokenPosition.X = 1000;
+               tokenPosition.X = 2000;
                FootballOnStage = false;
            }
            this.PossessedToken.Position = tokenPosition;

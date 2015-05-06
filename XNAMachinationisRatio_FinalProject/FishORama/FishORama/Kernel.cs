@@ -149,10 +149,10 @@ namespace FishORama
 
             // Create a new graphic asset  for the aquarium visuals using class X2DAsset.
             A = new X2DAsset("AquariumVisuals", "AquariumBackground"). 
-                UVOriginAt(400, 300).
+                UVOriginAt(960, 540).
                 UVTopLeftCornerAt(0, 0).
-                Width(800).
-                Height(600); 
+                Width(1920).
+                Height(1080); 
             
             // Import aquarium visual asset in the library.
             lib.ImportAsset(A);
@@ -301,7 +301,7 @@ namespace FishORama
              * Create Tokens
              */
 
-            AquariumToken aquarium = new AquariumToken("Aquarium", this, 800, 600);         // Create aquarium token.
+            AquariumToken aquarium = new AquariumToken("Aquarium", this, 1920, 1080);         // Create aquarium token.
 
              /* LEARNING PILL: placing tokens in a scene.
              * In order to be managed by the Machinationis Ratio engine, tokens must be placed
@@ -418,6 +418,12 @@ namespace FishORama
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            KeyboardState newState = Keyboard.GetState();
+
+            if (newState.IsKeyDown(Keys.Escape))
+            {
+                this.Exit();
+            }
             // Perform standard update operations.
             base.Update(gameTime);
         }

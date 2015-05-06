@@ -20,8 +20,9 @@ namespace XNAMachinationisRatio {
 
         public XNAGame(String pGameName) {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferHeight = 600;
-            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 1080;
+            graphics.PreferredBackBufferWidth = 1920;
+            graphics.IsFullScreen = true;
             mEngine = Engine.getInstance();
         }
 

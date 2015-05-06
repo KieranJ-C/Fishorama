@@ -137,7 +137,7 @@ namespace FishORama
                 Search();
             }
 
-            if (mAquarium.Signal == null && tokenPosition.X < 500 && tokenPosition.X > -500)
+            if (mAquarium.Signal == null && tokenPosition.X >= -2000 && tokenPosition.X <= 2000)
             {
                 if (tokenPosition.X > 0)
                 {
