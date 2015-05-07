@@ -11,7 +11,6 @@ namespace FishORama
     class OrangeFishMind : AIPlayer
     {
         #region Data Members
-
         private AquariumToken mAquarium;        // Reference to the aquarium in which the creature lives.
         private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
         private float mSpeed = 5;
@@ -70,7 +69,7 @@ namespace FishORama
         /// <param name="pGameTime">Game time</param>
         public void HorizontalSwimBehaviour()
         {
-
+            // This is the base fish behaviour of swimming left and right is used in Dash and acceleration
             Vector3 tokenPosition = this.PossessedToken.Position;
             tokenPosition.X = tokenPosition.X + (mSpeed * mFacingDirection);
             this.PossessedToken.Position = tokenPosition;
@@ -87,7 +86,7 @@ namespace FishORama
 
         public void HungryHorizontalSwimBehaviour()
         {
-
+            // This is the behaviour to allow the fish to swim left and right when it is hungry
             Vector3 tokenPosition = this.PossessedToken.Position;
             tokenPosition.X = tokenPosition.X + (mSpeed * mFacingDirection);
             if (tokenPosition.X >= StartHX + 75 || tokenPosition.X <= StartHX - 75 || this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
@@ -105,6 +104,7 @@ namespace FishORama
         
         public void VerticalSwimBehaviour()
         {
+            // This is the behaviour that allows the fish to swim up and down
             Vector3 tokenPosition = this.PossessedToken.Position;
             tokenPosition.Y ++;
             this.PossessedToken.Position = tokenPosition;
@@ -115,24 +115,29 @@ namespace FishORama
 
         public void RandomBehvaiour()
         {
+            // This gives the fish a random behvaiour.
             int BehaviourRandomNum = RandNumb.Next(1, 6);
             BehaviourNumber = BehaviourRandomNum;
         }
 
         public void SinkPixRand()
         {
+            // This is how far down the fish goes when the Sink behaviour occurs.
             int TPixSinkNum = RandNumb.Next(50, 150);
             TPixSink = TPixSinkNum;
         }
 
         public override void Update(ref GameTime pGameTime)
         {
+            // If the Fish does get stuck at the edge of the screen then after about 10 seconds on average it becomes unstuck.
             Vector3 tokenPosition = this.PossessedToken.Position;
             currTime = pGameTime.TotalGameTime.TotalSeconds;
+            Console.WriteLine(BehaviourNumber);
 
             #region NewLoop
             if (Newloop == true)
             {
+                // This resets all neccessary variables for any new behaviour. 
                 StartHX = tokenPosition.X;
                 StartTime = pGameTime.TotalGameTime.TotalSeconds;
                 FinishTime = StartTime + 2;
@@ -148,7 +153,7 @@ namespace FishORama
             #endregion
 
             #region Reset
-
+            // Unused just for testing purposes.
             if (BehaviourNumber == 0)
             {
                 if (tokenPosition.X == 0 && tokenPosition.Y == 0)

@@ -25,6 +25,7 @@ namespace FishORama
 
 
         private OrangeFishToken mOrangeFish;
+        private VolcanoToken mVolcano;
         
 
 
@@ -41,6 +42,12 @@ namespace FishORama
         {
 
             set { mOrangeFish = value; }
+        }
+
+        public VolcanoToken Volcano
+        {
+
+            set { mVolcano = value; }
         }
 
         #endregion
@@ -68,12 +75,23 @@ namespace FishORama
         //the amount they rise can be measured so that they can respawn again after 150 height gain
         public void BubbleRespawn()
         {
+            // The first five bubbles are meant to react to the fish as they move from the fish's mouth
             Vector3 tokenPosition = this.PossessedToken.Position;
-            this.PossessedToken.Position = mOrangeFish.Position ;
-            startY = mOrangeFish.Position.Y;
+            if (this.PossessedToken.Name != "Bubble6")
+            {
+                this.PossessedToken.Position = mOrangeFish.Position;
+                startY = mOrangeFish.Position.Y;
+            }
+            // The other bubble is to do with the Volcano
+            else if (this.PossessedToken.Name == "Bubble6")
+            {
+                this.PossessedToken.Position = mVolcano.Position;
+                startY = mVolcano.Position.Y;
+            }
             justSpawned = true;
 
             #region Individual Bubble Checks
+            // Rather messy way of givig each bubble a unique random speed each time they spawn
             if (this.PossessedToken.Name == "Bubble0" && justSpawned == true)
             {
                 mSpeed = randomSpeed.Next(3, 6);
@@ -104,6 +122,25 @@ namespace FishORama
                 mSpeed = randomSpeed.Next(3, 6);
                 mSpeed = randomSpeed.Next(3, 6);
             }
+            if (this.PossessedToken.Name == "Bubble5" && justSpawned == true)
+            {
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+            }
+            if (this.PossessedToken.Name == "Bubble6" && justSpawned == true)
+            {
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+                mSpeed = randomSpeed.Next(3, 6);
+            }
             #endregion
             
         }
@@ -114,15 +151,33 @@ namespace FishORama
            Vector3 tokenPosition = this.PossessedToken.Position;
             i += 0.1;
            tokenPosition.Y = tokenPosition.Y + (mSpeed);
-           tokenPosition.X = tokenPosition.X + ((float)Math.Sin(i));
+           if (this.PossessedToken.Name != "Bubble6")
+           {
+               tokenPosition.X = tokenPosition.X + (((float)Math.Sin(i)) * 2);
+           }
+           else if (this.PossessedToken.Name == "Bubble6")
+           {
+               tokenPosition.X = tokenPosition.X + (((float)Math.Cos(i)) * 5);
+           }
            this.PossessedToken.Position = tokenPosition;
-           if (justSpawned == true)
+           if (justSpawned == true && this.PossessedToken.Name != "Bubble6")
            {
                startY = mOrangeFish.Position.Y;
                justSpawned = false;
            }
+           else if(justSpawned == true && this.PossessedToken.Name == "Bubble6")
+           {
+               startY = mVolcano.Position.Y;
+               justSpawned = false;
+           }
 
-           if (tokenPosition.Y >= startY + 150)
+           if (tokenPosition.Y >= startY + 150 && this.PossessedToken.Name != "Bubble6")
+           {
+
+               BubbleRespawn();
+           }
+
+           else if (tokenPosition.Y >= startY + 550 && this.PossessedToken.Name == "Bubble6")
            {
 
                BubbleRespawn();

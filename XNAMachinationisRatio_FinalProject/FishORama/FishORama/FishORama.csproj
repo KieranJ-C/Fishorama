@@ -116,6 +116,7 @@
     <Compile Include="ChickenLegToken.cs" />
     <Compile Include="BubbleToken.cs" />
     <Compile Include="BubbleMind.cs" />
+    <Compile Include="VolcanoToken.cs" />
     <Compile Include="TargetMind.cs" />
     <Compile Include="TargetToken.cs" />
     <Compile Include="SignalToken.cs" />

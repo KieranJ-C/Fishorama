@@ -18,6 +18,7 @@ namespace FishORama
         private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
         private float mSpeed;
         private float startY;
+        private float startX;
         private Boolean CanRise = true;
         private bool justSpawned = true;
         static Random rnd = new Random();
@@ -59,7 +60,6 @@ namespace FishORama
         /// AI Update method.
         /// </summary>
         /// <param name="pGameTime">Game time</param>
-
         public void HorizontalSwimBehaviour()
         {
             Vector3 tokenPosition = this.PossessedToken.Position;
@@ -109,24 +109,30 @@ namespace FishORama
                                                         this.PossessedToken.Orientation.Y,
                                                         this.PossessedToken.Orientation.Z);
         }
+        public void RandomiseSpeed()
+        {
+            if (this.PossessedToken.Name == "seahorse0")
+            {
+                mSpeed = rnd.Next(5, 11);
+            }
+
+            if (this.PossessedToken.Name == "seahorse1")
+            {
+                mSpeed = rnd.Next(5, 11);
+                mSpeed = rnd.Next(5, 11);
+            }
+
+            if (this.PossessedToken.Name == "seahorse2")
+            {
+                mSpeed = rnd.Next(5, 11);
+                mSpeed = rnd.Next(5, 11);
+                mSpeed = rnd.Next(5, 11);
+            }
+        }
 
         public override void Update(ref GameTime pGameTime)
         {
-            //Random rnd = new Random();
-            
-
             Vector3 tokenPosition = this.PossessedToken.Position;
-          /*  if (tokenPosition.X >= 960 && this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
-            {
-                mFacingDirection = -1;
-                tokenPosition.X = 959;
-            }
-            if (tokenPosition.X <= -960 && this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
-            {
-                mFacingDirection = 1;
-                tokenPosition.X = -959;
-            }*/
-
             if (mAquarium.ChickenLeg != null)
             {
                 mSpeed += 5;
@@ -144,38 +150,23 @@ namespace FishORama
             }
             this.PossessedToken.Position = tokenPosition;
             HorizontalSwimBehaviour();
-            if (this.PossessedToken.Name == "seahorse0" && justSpawned == true)
-            {
-                mSpeed = rnd.Next(5, 11);
-            }
 
-            if (this.PossessedToken.Name == "seahorse1" && justSpawned == true)
-            {
-                mSpeed = rnd.Next(5, 11);
-                mSpeed = rnd.Next(5, 11);
-            }
-
-            if (this.PossessedToken.Name == "seahorse2" && justSpawned == true)
-            {
-                mSpeed = rnd.Next(5, 11);
-                mSpeed = rnd.Next(5, 11);
-                mSpeed = rnd.Next(5, 11);
-            }
 
             if (justSpawned == true)
             {
+                RandomiseSpeed();
                 startY = tokenPosition.Y;
                 justSpawned = false;
             }
             if (tokenPosition.X >= 960 && this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
             {
                 mFacingDirection = -1;
-                tokenPosition.X = 959;
+                tokenPosition.X = 953;
             }
             if (tokenPosition.X <= -960 && this.mAquarium.ReachedHorizontalBoundary(this.PossessedToken))
             {
                 mFacingDirection = 1;
-                tokenPosition.X = -959;
+                tokenPosition.X = -953;
             }
             if (CanRise == true)
             {
@@ -191,10 +182,6 @@ namespace FishORama
             {
                 mSpeed -= 5;
             }
-            justSpawned = false;
-
-
-
         }
         #endregion
     }

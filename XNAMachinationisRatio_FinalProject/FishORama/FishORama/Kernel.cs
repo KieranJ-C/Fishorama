@@ -257,6 +257,16 @@ namespace FishORama
             // Import Bubble visual asset in the library
             lib.ImportAsset(A);
 
+            // Create a new graphic asset  for the Bubble visuals using class X2DAsset.
+            A = new X2DAsset("BubbleVisuals2", "Bubble2").
+                UVOriginAt(32, 32).
+                UVTopLeftCornerAt(0, 0).
+                Width(64).
+                Height(64);
+
+            // Import Bubble visual asset in the library
+            lib.ImportAsset(A);
+
             // Create Submarine visuals using class X2DAsset.
             A = new X2DAsset("SubmarineVisuals", "Submarine").
                 UVOriginAt(64, 32).
@@ -276,6 +286,17 @@ namespace FishORama
 
             // Import Football visual asset in the library
             lib.ImportAsset(A);
+
+            // Create a new graphic asset  for the Volcano visuals using class X2DAsset.
+            A = new X2DAsset("VolcanoVisuals", "Volcano").
+                UVOriginAt(256, 256).
+                UVTopLeftCornerAt(0, 0).
+                Width(512).
+                Height(512);
+
+            // Import Football visual asset in the library
+            lib.ImportAsset(A);
+
 
             // Return library.
             return lib;
@@ -358,28 +379,43 @@ namespace FishORama
             tokenPos = new Vector3(PiranharandomX, PiranharandomY, 1);
             mScene.Place(Piranha, tokenPos);
 
+            // Had to split this up to allow bubbles to have access to "Volcano" but I place it on scene last so it is behind everyting but the background image. 
+            VolcanoToken Volcano = new VolcanoToken("Volcano", aquarium);
+
+
             List<BubbleToken> Blist = new List<BubbleToken>();
             Random rand = new Random();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 7; i++)
             {
 
-                Blist.Add(new BubbleToken("Bubble" + i, aquarium, orangeFish1));
+                Blist.Add(new BubbleToken("Bubble" + i, aquarium, orangeFish1, Volcano));
 
             }
 
             for (int i = 0; i < Blist.Count; i++)
             {
-                float x = fishPos.X;
-                float y = fishPos.Y + (i * 4);
-                float z = 2;
-                tokenPos = new Vector3(x, y, z);
-                mScene.Place(Blist[i], tokenPos);
+                if (i < 6)
+                {
+                    float x = fishPos.X;
+                    float y = fishPos.Y + (i * 4);
+                    float z = 2;
+                    tokenPos = new Vector3(x, y, z);
+                    mScene.Place(Blist[i], tokenPos);
+                }
+                else if (i == 6)
+                {
+                    float x = -710;
+                    float y = -320;
+                    float z = 2;
+                    tokenPos = new Vector3(x, y, z);
+                    mScene.Place(Blist[i], tokenPos);
+                }
+
             }
             
+            // This makes a list then you use the list to place all the contents of the list onto the scene
             List<SeahorseToken> SHlist = new List<SeahorseToken>();
-            
-
             for(int i = 0; i <3; i++)
             {
             
@@ -389,8 +425,8 @@ namespace FishORama
 
             for (int i = 0; i < SHlist.Count; i++)  
             {
-                int x = rand.Next(-350, 350);
-                int y = rand.Next(-100, 100);
+                int x = rand.Next(-500, 500);
+                int y = rand.Next(-400, 400);
                 int z = 1;
                
                 
@@ -406,8 +442,8 @@ namespace FishORama
             tokenPos = new Vector3(0, -260, 1);
             mScene.Place(Football, tokenPos);
 
-
-        
+            tokenPos = new Vector3(-710, -320, 1);
+            mScene.Place(Volcano, tokenPos);
  }  
                 
                 
