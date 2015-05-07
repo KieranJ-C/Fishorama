@@ -200,6 +200,8 @@ namespace FishORama
             #region Acceleration
             else if (BehaviourNumber == 2)
             {
+                // It does 60 updates per second so every 60 updates it changes the speed by 1 if it hasn't been 15 seconds it increases the speed,
+                // if it has been more than 15 seconds it decreases the speed by 1.
                 i++;
                 if (i == 60)
                 {

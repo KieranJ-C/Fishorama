@@ -418,6 +418,7 @@ namespace FishORama
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            // Added a way to close the game without Alt + F4, Escape is a common industy standard
             KeyboardState newState = Keyboard.GetState();
 
             if (newState.IsKeyDown(Keys.Escape))

@@ -15,18 +15,17 @@ namespace FishORama
         #region Data Members
 
         private AquariumToken mAquarium;        // Reference to the aquarium in which the creature lives.
-
-        private float mFacingDirection;         // Direction the fish is facing (1: right; -1: left).
         Random speed = new Random();
         private int mSpeed;
         private float startY;
-        private float tokenPos;
+
         private bool justSpawned = true;
         private double i = 0;
         Random randomSpeed = new Random();
 
-        I2DScene mScene;
+
         private OrangeFishToken mOrangeFish;
+        
 
 
 
@@ -56,7 +55,6 @@ namespace FishORama
         {
 
             this.Possess(pToken);       // Possess token.
-            mFacingDirection = 1;       // Current direction the fish is facing.
             Vector3 tokenPosition = this.PossessedToken.Position;
             startY = tokenPosition.Y;
             
@@ -66,6 +64,8 @@ namespace FishORama
         #endregion
 
         #region Methods
+        //When bubbles reach the top of the screen there speed is randomised and there position is adjusted and their Y position checked so that
+        //the amount they rise can be measured so that they can respawn again after 150 height gain
         public void BubbleRespawn()
         {
             Vector3 tokenPosition = this.PossessedToken.Position;
